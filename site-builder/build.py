@@ -258,13 +258,34 @@ def menu_js():
     )
 
 
-# Placeholder OPL mark: globe + plane + basketball forming an "O" (blue/red).
-OPL_MARK = """<svg class="mark" viewBox="0 0 64 64" role="img" aria-label="OPL logo placeholder">
-  <circle cx="32" cy="32" r="29" fill="none" stroke="#c8102e" stroke-width="4"/>
-  <circle cx="32" cy="32" r="22" fill="none" stroke="#ffffff" stroke-width="2"/>
-  <path d="M10 32h44 M32 10c8 7 8 37 0 44 M32 10c-8 7-8 37 0 44" fill="none" stroke="#5b8dd6" stroke-width="1.6"/>
-  <path d="M20 22l26-8-8 26-5-13-13-5z" fill="#ffffff"/>
-  <circle cx="32" cy="32" r="6" fill="#c8102e"/>
+# OPL mark recreated as SVG from the client's description: a globe forming an "O"
+# with a white "O" cut out of the centre, basketball seam lines across the globe,
+# a plane crossing it -- blue and red. (Final logo PENDING from client; this is a
+# faithful stand-in built to the description.)
+OPL_MARK = """<svg class="mark" viewBox="0 0 64 64" role="img" aria-label="Overseas Premier League logo">
+  <defs>
+    <clipPath id="oplGlobe"><circle cx="32" cy="32" r="27"/></clipPath>
+  </defs>
+  <!-- globe body -->
+  <circle cx="32" cy="32" r="27" fill="#1c4fa0"/>
+  <g clip-path="url(#oplGlobe)" fill="none" stroke="#bcd2f2" stroke-width="1.4" opacity=".85">
+    <ellipse cx="32" cy="32" rx="13" ry="27"/>
+    <line x1="5" y1="32" x2="59" y2="32"/>
+    <path d="M7 20 H57 M7 44 H57"/>
+  </g>
+  <!-- basketball seam lines across the globe -->
+  <g clip-path="url(#oplGlobe)" fill="none" stroke="#c8102e" stroke-width="1.8">
+    <path d="M32 5 V59"/>
+    <path d="M11 14 Q32 26 53 14"/>
+    <path d="M11 50 Q32 38 53 50"/>
+  </g>
+  <!-- red ring forming the O -->
+  <circle cx="32" cy="32" r="27" fill="none" stroke="#c8102e" stroke-width="3.5"/>
+  <!-- white "O" cut out in the centre -->
+  <circle cx="32" cy="32" r="11" fill="#ffffff"/>
+  <circle cx="32" cy="32" r="7" fill="#1c4fa0"/>
+  <!-- plane crossing -->
+  <path d="M22 40 L44 24 l3 1 -9 9 6 1 3 -2 2 1 -4 4 -5 5 -1 -2 1 -3 -1 -6 -9 9z" fill="#ffffff" stroke="#0b2349" stroke-width=".6"/>
 </svg>"""
 
 # Placeholder Huskies mark: simple wolf head silhouette (navy/red/white).

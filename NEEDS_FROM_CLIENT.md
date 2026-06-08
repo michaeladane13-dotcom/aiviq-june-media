@@ -12,12 +12,19 @@ Status key: 🔴 blocks launch · 🟡 placeholder in place, needs real content 
 
 ---
 
-## 1. 🔴 Logos & brand art (files were NOT in the build environment)
-The brief said logos/photos were in `/mnt/user-data/uploads/`, but that folder was
-empty in my session. Right now everything is a placeholder slot or a simple SVG mark.
+## 1. 🔴 Logos & brand art (files STILL NOT reaching the build environment)
+Two briefs have referenced files in `/mnt/user-data/uploads/`, but that folder does
+not exist in my session and the named files (incl. the Aiviq `A1AF4F72…` and
+`CA56CA7D…` PNGs) are nowhere on the filesystem. **The uploads aren't getting to me.**
+Until they do: the OPL logo is a faithful SVG recreation from the description, the
+Aiviq footer uses an SVG gold mark, and all photos are placeholder slots.
 
-Please provide (PNG or SVG, transparent background preferred):
-- [ ] **OPL primary logo** (the globe + plane + basketball "O", blue/red)
+Please provide (PNG or SVG, transparent background preferred) — and confirm how you're
+attaching them, since the upload path isn't working:
+- [x] **OPL primary logo** — recreated as SVG from the description (globe forming an
+      "O" with white cut-out, basketball seams, plane, blue/red). Swap for final art when sent.
+- [ ] **Aiviq Enterprises Inc. logo** (gold on black) for the footer — file referenced
+      but not received; currently an SVG gold-diamond stand-in.
 - [ ] **OPL logo on dark** variant if you have one (for the navy header)
 - [ ] **Vancouver Huskies logo** (the wolf mark from the jersey photos)
 - [ ] **Valletta BC logo** (used on OPL Home + About partnership sections)
@@ -49,9 +56,8 @@ OPL/Huskies pages). None were available, so all are placeholders.
       they currently use a clean navy gradient)
 
 ## 5. 🟡 Contact details
-Placeholders in use: `info@overseaspremierleague.com` and `info@vancouverhuskies.com`.
-- [ ] **Real OPL/Huskies email** (the brief says "link to OPL/Huskies email" — one
-      shared inbox, or one per site?)
+- [x] **Email confirmed:** `vancouverhuskiesbasketball@gmail.com` — now wired into both
+      sites' contact links and footers.
 - [ ] **Phone number?** (optional — not currently shown)
 - [ ] **Social links** (Instagram / X / TikTok / YouTube) for headers/footers? (optional)
 - [ ] **Physical location** to list for the Huskies (Vancouver venue/gym)? (optional)

@@ -17,12 +17,30 @@
 <header class="site-header">
   <div class="container nav">
     <a class="brand" href="index.html">
-      <svg class="mark" viewBox="0 0 64 64" role="img" aria-label="OPL logo placeholder">
-  <circle cx="32" cy="32" r="29" fill="none" stroke="#c8102e" stroke-width="4"/>
-  <circle cx="32" cy="32" r="22" fill="none" stroke="#ffffff" stroke-width="2"/>
-  <path d="M10 32h44 M32 10c8 7 8 37 0 44 M32 10c-8 7-8 37 0 44" fill="none" stroke="#5b8dd6" stroke-width="1.6"/>
-  <path d="M20 22l26-8-8 26-5-13-13-5z" fill="#ffffff"/>
-  <circle cx="32" cy="32" r="6" fill="#c8102e"/>
+      <svg class="mark" viewBox="0 0 64 64" role="img" aria-label="Overseas Premier League logo">
+  <defs>
+    <clipPath id="oplGlobe"><circle cx="32" cy="32" r="27"/></clipPath>
+  </defs>
+  <!-- globe body -->
+  <circle cx="32" cy="32" r="27" fill="#1c4fa0"/>
+  <g clip-path="url(#oplGlobe)" fill="none" stroke="#bcd2f2" stroke-width="1.4" opacity=".85">
+    <ellipse cx="32" cy="32" rx="13" ry="27"/>
+    <line x1="5" y1="32" x2="59" y2="32"/>
+    <path d="M7 20 H57 M7 44 H57"/>
+  </g>
+  <!-- basketball seam lines across the globe -->
+  <g clip-path="url(#oplGlobe)" fill="none" stroke="#c8102e" stroke-width="1.8">
+    <path d="M32 5 V59"/>
+    <path d="M11 14 Q32 26 53 14"/>
+    <path d="M11 50 Q32 38 53 50"/>
+  </g>
+  <!-- red ring forming the O -->
+  <circle cx="32" cy="32" r="27" fill="none" stroke="#c8102e" stroke-width="3.5"/>
+  <!-- white "O" cut out in the centre -->
+  <circle cx="32" cy="32" r="11" fill="#ffffff"/>
+  <circle cx="32" cy="32" r="7" fill="#1c4fa0"/>
+  <!-- plane crossing -->
+  <path d="M22 40 L44 24 l3 1 -9 9 6 1 3 -2 2 1 -4 4 -5 5 -1 -2 1 -3 -1 -6 -9 9z" fill="#ffffff" stroke="#0b2349" stroke-width=".6"/>
 </svg>
       <span class="brand-text"><strong>Overseas Premier League</strong><span>OPL</span></span>
     </a>
@@ -37,7 +55,7 @@
     <h1>Let's talk basketball.</h1>
     <p class="lead">Questions about placement, the Malta package, or an upcoming event? Reach the OPL team directly.</p>
     <div class="cta-row">
-      <a class="btn btn-primary btn-lg" href="mailto:info@overseaspremierleague.com">Email OPL</a>
+      <a class="btn btn-primary btn-lg" href="mailto:vancouverhuskiesbasketball@gmail.com">Email OPL</a>
     </div>
   </div>
 </section>
@@ -48,7 +66,7 @@
       <span class="kicker">Get in touch</span>
       <h2>Reach the team</h2>
       <p>Email is the fastest way to reach us about placement and events.</p>
-      <p><strong>Email:</strong> <a href="mailto:info@overseaspremierleague.com">info@overseaspremierleague.com</a></p>
+      <p><strong>Email:</strong> <a href="mailto:vancouverhuskiesbasketball@gmail.com">vancouverhuskiesbasketball@gmail.com</a></p>
       <p class="notice">Domain pending &mdash; this address will be confirmed once the OPL domain is registered.</p>
     </div>
     <div><div class="logo-slot light">OPL logo pending</div></div>
@@ -69,7 +87,7 @@
       </div>
       <div>
         <h4>Contact</h4>
-        <a href="mailto:info@overseaspremierleague.com">info@overseaspremierleague.com</a>
+        <a href="mailto:vancouverhuskiesbasketball@gmail.com">vancouverhuskiesbasketball@gmail.com</a>
       </div>
     </div>
     <div class="aiviq-credit">
