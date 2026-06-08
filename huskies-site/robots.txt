@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://huskies-domain-pending.com/sitemap.xml

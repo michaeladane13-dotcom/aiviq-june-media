@@ -1,0 +1,57 @@
+{
+  "key": "huskies",
+  "site_name": "Vancouver Huskies",
+  "short_name": "Huskies",
+  "tagline": "Vancouver's pro-track basketball program.",
+  "subtagline": "Train, compete, and earn your shot at the overseas pathway. Navy, red, and white — the Huskies way.",
+  "domain_placeholder": "huskies-domain-pending.com",
+  "contact_email": "info@vancouverhuskies.com",
+  "square_link": "#square-link-pending",
+  "theme": {
+    "navy": "#0b2349",
+    "navy_deep": "#071735",
+    "red": "#c8102e",
+    "white": "#ffffff",
+    "gold": "#c9a64a"
+  },
+  "nav": [
+    {"label": "Home", "href": "index.html"},
+    {"label": "Roster & Photos", "href": "index.html#gallery"},
+    {"label": "Events", "href": "events.html"},
+    {"label": "Sign Up", "href": "signup.html"}
+  ],
+  "events": [
+    {
+      "name": "Huskies Training Sessions",
+      "date_display": "Ongoing — Summer 2026",
+      "date_iso": "2026-06-01",
+      "location": "Vancouver",
+      "status": "Open",
+      "blurb": "Weekly skills, conditioning, and team play for rostered Huskies players."
+    },
+    {
+      "name": "OPL Summer League",
+      "date_display": "July 5, 2026",
+      "date_iso": "2026-07-05",
+      "location": "TBA",
+      "status": "Scheduled",
+      "blurb": "Huskies players compete in the Overseas Premier League Summer League slate."
+    },
+    {
+      "name": "OPL Overseas Training Camp",
+      "date_display": "September 21 – 28, 2026",
+      "date_iso": "2026-09-21",
+      "location": "Malta",
+      "status": "Pathway opportunity",
+      "blurb": "Eligible Huskies players can carry their game overseas through the OPL camp in Malta."
+    }
+  ],
+  "gallery": [
+    {"caption": "Game day", "type": "game"},
+    {"caption": "Training session", "type": "training"},
+    {"caption": "Team huddle", "type": "game"},
+    {"caption": "Skills work", "type": "training"},
+    {"caption": "On the break", "type": "game"},
+    {"caption": "Pre-game warmup", "type": "training"}
+  ]
+}

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://opl-domain-pending.com/sitemap.xml
