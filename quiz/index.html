@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Which Spirit Guide Is Trying to Reach You? | Chaya The Medium</title>
+<meta name="description" content="Take the free 1-minute quiz to discover which spirit guide is walking with you right now — and receive a personalized message from Chaya The Medium." />
+<!-- Open Graph for the ad / social shares -->
+<meta property="og:title" content="Which Spirit Guide Is Trying to Reach You?" />
+<meta property="og:description" content="A free 1-minute quiz. Discover your guide and receive a personal message." />
+<meta property="og:type" content="website" />
+<style>
+  :root{
+    --bg:#0b0a14; --bg2:#141026; --ink:#f4efe6; --muted:#b6aecb;
+    --gold:#e8c073; --gold-soft:#caa85f; --line:rgba(232,192,115,.25);
+    --card:rgba(255,255,255,.04);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(1200px 600px at 50% -10%, #2a1f4d 0%, rgba(42,31,77,0) 60%),
+      radial-gradient(900px 500px at 100% 110%, #1c2a44 0%, rgba(28,42,68,0) 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+  .wrap{max-width:640px;margin:0 auto;padding:32px 22px 64px}
+  .eyebrow{
+    text-transform:uppercase; letter-spacing:.32em; font-size:12px;
+    color:var(--gold); font-family:'Inter',Helvetica,Arial,sans-serif; font-weight:600;
+    text-align:center; margin-bottom:14px; opacity:.9;
+  }
+  h1{
+    font-size:clamp(30px,7vw,46px); line-height:1.08; text-align:center;
+    margin:0 0 10px; font-weight:600; letter-spacing:.4px;
+  }
+  .sub{
+    text-align:center; color:var(--muted); font-size:18px; max-width:460px;
+    margin:0 auto 26px;
+  }
+  .stars{color:var(--gold);text-align:center;letter-spacing:.5em;margin:18px 0 8px;font-size:14px}
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:18px;
+    padding:26px 22px; backdrop-filter:blur(6px);
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
+  }
+  .progress{height:4px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden;margin-bottom:22px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold-soft),var(--gold));transition:width .4s ease}
+  .qnum{font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .question{font-size:clamp(22px,5vw,28px);margin:0 0 20px;font-weight:600}
+  .opt{
+    display:block;width:100%;text-align:left;cursor:pointer;
+    background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10);
+    color:var(--ink); border-radius:13px; padding:15px 17px; margin:10px 0;
+    font-size:18px; font-family:inherit; transition:.18s ease;
+  }
+  .opt:hover{border-color:var(--gold);background:rgba(232,192,115,.08);transform:translateY(-1px)}
+  .btn{
+    display:inline-block;cursor:pointer;border:none;border-radius:99px;
+    background:linear-gradient(180deg,var(--gold),var(--gold-soft));
+    color:#1a1206;font-family:'Inter',sans-serif;font-weight:700;letter-spacing:.02em;
+    font-size:16px;padding:15px 26px;width:100%;transition:.18s ease;
+  }
+  .btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
+  .btn:disabled{opacity:.55;cursor:default;transform:none}
+  input[type=email],input[type=text]{
+    width:100%;padding:15px 16px;border-radius:13px;margin:8px 0 14px;
+    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);
+    color:var(--ink);font-size:17px;font-family:inherit;
+  }
+  input::placeholder{color:#8a83a3}
+  .fine{font-family:'Inter',sans-serif;font-size:12px;color:#8a83a3;text-align:center;margin-top:10px;line-height:1.5}
+  .glyph{font-size:46px;text-align:center;margin:0 0 6px}
+  .result-name{font-size:clamp(26px,6vw,38px);text-align:center;margin:0 0 6px;color:var(--gold)}
+  .result-body{font-size:19px;color:var(--ink);margin:14px 0}
+  .hidden{display:none}
+  .center{text-align:center}
+  a.link{color:var(--gold)}
+  .err{color:#ff9b8a;font-family:'Inter',sans-serif;font-size:13px;text-align:center;min-height:18px;margin-top:4px}
+  .footer{margin-top:26px;text-align:center;color:#6f6890;font-family:'Inter',sans-serif;font-size:12px}
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;600;700&display=swap');
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="wrap">
+
+  <!-- INTRO -->
+  <section id="intro">
+    <div class="eyebrow">Chaya The Medium</div>
+    <h1>Which Spirit Guide Is Trying to Reach You?</h1>
+    <p class="sub">Answer 5 quick questions and discover the guide walking beside you right now — plus a personal message waiting in your inbox.</p>
+    <div class="stars">&#10022; &#10022; &#10022; &#10022; &#10022;</div>
+    <div class="card center">
+      <p class="result-body" style="margin-top:4px">It takes about 60 seconds. Trust the first answer that pulls at you.</p>
+      <button class="btn" onclick="start()">Begin the Reading &nbsp;&#10142;</button>
+      <div class="fine">Free &middot; 1 minute &middot; Your result is revealed instantly</div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="hidden">
+    <div class="progress"><i id="bar"></i></div>
+    <div class="card">
+      <div class="qnum" id="qnum">Question 1 of 5</div>
+      <h2 class="question" id="question">...</h2>
+      <div id="options"></div>
+    </div>
+  </section>
+
+  <!-- EMAIL GATE -->
+  <section id="gate" class="hidden">
+    <div class="stars">&#10022;</div>
+    <h1 style="font-size:clamp(26px,6vw,38px)">Your guide has come through.</h1>
+    <p class="sub">Enter your email to reveal your spirit guide and receive your personal message from Chaya.</p>
+    <div class="card">
+      <input id="firstname" type="text" placeholder="First name (optional)" autocomplete="given-name" />
+      <input id="email" type="email" placeholder="Your best email" autocomplete="email" required />
+      <button class="btn" id="revealBtn" onclick="submitEmail()">Reveal My Spirit Guide &nbsp;&#10022;</button>
+      <div class="err" id="err"></div>
+      <div class="fine">Join Chaya's free newsletter for moon updates, messages &amp; reading offers. Unsubscribe anytime.</div>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section id="result" class="hidden">
+    <div class="card center">
+      <div class="glyph" id="rGlyph">&#10022;</div>
+      <div class="eyebrow">Your Spirit Guide</div>
+      <h2 class="result-name" id="rName"></h2>
+      <p class="result-body" id="rBody"></p>
+      <p class="result-body" id="rEmailNote" style="color:var(--muted);font-size:16px"></p>
+      <a class="btn" id="ctaBtn" href="https://chayathemedium.org" target="_blank" rel="noopener" style="text-decoration:none;display:block;margin-top:10px">Book Your Personal Reading &#10142;</a>
+      <div class="fine">A full reading goes deeper than any quiz ever could.</div>
+    </div>
+  </section>
+
+  <div class="footer">&copy; Chaya The Medium &middot; For entertainment &amp; reflection</div>
+</div>
+
+<script>
+/* ====== MailerLite wiring ====== */
+var ML_ACCOUNT = "2234262";
+var ML_FORM    = "189681380338173838";
+
+/* ====== Quiz definition ====== */
+/* Each option maps to one of 4 archetypes: ancestor, protector, teacher, messenger */
+var QUESTIONS = [
+  { q:"When you need an answer, where does it usually arrive?",
+    a:[
+      ["A sudden warmth, like someone familiar is near","ancestor"],
+      ["A gut-deep 'no' or 'go' that stops you cold","protector"],
+      ["A slow knowing that unfolds over days","teacher"],
+      ["A sign — a number, a feather, a song","messenger"]
+    ]},
+  { q:"Which moment feels most like *you*?",
+    a:[
+      ["Looking through old photos and feeling held","ancestor"],
+      ["Standing up for someone who couldn't","protector"],
+      ["Finally understanding why something happened","teacher"],
+      ["Catching a 'coincidence' that gave you chills","messenger"]
+    ]},
+  { q:"What have you been quietly carrying lately?",
+    a:[
+      ["Grief, or missing someone who passed","ancestor"],
+      ["A situation you need strength to face","protector"],
+      ["A big decision or life lesson","teacher"],
+      ["A feeling that you're being guided somewhere","messenger"]
+    ]},
+  { q:"Pick the image that calls you:",
+    a:[
+      ["A candle lit at a family table","ancestor"],
+      ["A wolf at the edge of the trees","protector"],
+      ["An open book under moonlight","teacher"],
+      ["A single white feather falling","messenger"]
+    ]},
+  { q:"What do you most want from your guide right now?",
+    a:[
+      ["To feel my loved one is still with me","ancestor"],
+      ["Protection and the courage to move forward","protector"],
+      ["Clarity and wisdom for what's next","teacher"],
+      ["A clear sign that I'm on the right path","messenger"]
+    ]}
+];
+
+var RESULTS = {
+  ancestor:{ glyph:"&#128367;", name:"The Ancestor",
+    body:"A loved one who has crossed over is staying close to you. This guide carries the warmth of family — they show up in scents, songs, and sudden waves of comfort. They want you to know: you were never grieving alone." },
+  protector:{ glyph:"&#128737;", name:"The Protector",
+    body:"A fierce guardian walks with you — the one who hardens your gut into a 'no' and steadies you in the storm. They've been clearing the road ahead. They want you to stop shrinking and step into the strength they see in you." },
+  teacher:{ glyph:"&#128218;", name:"The Teacher",
+    body:"An old, patient soul guides you through lessons rather than rescues. Every hard season has been shaping you. They want you to trust the wisdom you've already earned — clarity is closer than you think." },
+  messenger:{ glyph:"&#10022;", name:"The Messenger",
+    body:"An angelic guide speaks to you in signs — repeating numbers, feathers, songs at the perfect moment. None of it is coincidence. They want you to start trusting the signs you keep brushing off. You are exactly where you're meant to be." }
+};
+
+var scores={ancestor:0,protector:0,teacher:0,messenger:0};
+var idx=0, finalKey=null;
+
+function show(id){ ["intro","quiz","gate","result"].forEach(function(s){ document.getElementById(s).classList.add("hidden"); }); document.getElementById(id).classList.remove("hidden"); window.scrollTo({top:0,behavior:"smooth"}); }
+function start(){ idx=0; scores={ancestor:0,protector:0,teacher:0,messenger:0}; render(); show("quiz"); }
+
+function render(){
+  var item=QUESTIONS[idx];
+  document.getElementById("qnum").textContent="Question "+(idx+1)+" of "+QUESTIONS.length;
+  document.getElementById("question").textContent=item.q;
+  document.getElementById("bar").style.width=((idx)/QUESTIONS.length*100)+"%";
+  var box=document.getElementById("options"); box.innerHTML="";
+  item.a.forEach(function(pair){
+    var b=document.createElement("button");
+    b.className="opt"; b.textContent=pair[0];
+    b.onclick=function(){ pick(pair[1]); };
+    box.appendChild(b);
+  });
+}
+function pick(key){
+  scores[key]++; idx++;
+  if(idx<QUESTIONS.length){ render(); }
+  else { document.getElementById("bar").style.width="100%"; finalKey=topKey(); show("gate"); }
+}
+function topKey(){
+  var best=null,bv=-1;
+  for(var k in scores){ if(scores[k]>bv){bv=scores[k];best=k;} }
+  return best;
+}
+
+function validEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+
+function submitEmail(){
+  var email=document.getElementById("email").value.trim();
+  var name=document.getElementById("firstname").value.trim();
+  var err=document.getElementById("err");
+  if(!validEmail(email)){ err.textContent="Please enter a valid email so your guide can reach you."; return; }
+  err.textContent="";
+  var btn=document.getElementById("revealBtn");
+  btn.disabled=true; btn.textContent="Opening the connection...";
+
+  var result=RESULTS[finalKey];
+  // JSONP submit to MailerLite embedded form (public endpoint, no secret needed)
+  var cb="ml_cb_"+Date.now();
+  window[cb]=function(){ revealResult(true); };
+  var params=new URLSearchParams();
+  params.set("fields[email]",email);
+  if(name) params.set("fields[name]",name);
+  params.set("fields[quiz_result]",result.name);
+  params.set("ml-submit","1");
+  params.set("anticsrf","true");
+  params.set("callback",cb);
+  var s=document.createElement("script");
+  s.src="https://assets.mailerlite.com/jsonp/"+ML_ACCOUNT+"/forms/"+ML_FORM+"/subscribe?"+params.toString();
+  // Reveal regardless after a short wait so a blocked callback never traps the user
+  var done=false;
+  s.onload=function(){ if(!done){done=true; revealResult(true);} };
+  s.onerror=function(){ if(!done){done=true; revealResult(true);} };
+  setTimeout(function(){ if(!done){done=true; revealResult(true);} },2500);
+  document.body.appendChild(s);
+}
+
+function revealResult(saved){
+  var r=RESULTS[finalKey];
+  document.getElementById("rGlyph").innerHTML=r.glyph;
+  document.getElementById("rName").textContent=r.name;
+  document.getElementById("rBody").textContent=r.body;
+  document.getElementById("rEmailNote").textContent= saved
+    ? "A deeper message from Chaya is on its way to your inbox. Check your email (and your spam folder, just in case)."
+    : "";
+  show("result");
+}
+</script>
+</body>
+</html>
