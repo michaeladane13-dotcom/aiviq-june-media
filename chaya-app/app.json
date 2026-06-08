@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "Chaya",
+    "slug": "chaya-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#120F1D"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.chaya.app"
+    },
+    "android": {
+      "package": "com.chaya.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundColor": "#120F1D"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
