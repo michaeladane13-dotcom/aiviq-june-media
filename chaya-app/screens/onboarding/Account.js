@@ -25,6 +25,7 @@ export default function Account({ navigation, route }) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [inlineError, setInlineError] = useState('');
+  const [needsConfirmation, setNeedsConfirmation] = useState(false);
 
   useEffect(() => {
     if (inlineError) {
@@ -67,6 +68,7 @@ export default function Account({ navigation, route }) {
   const handleCreateAccount = async () => {
     setSubmitted(true);
     setInlineError('');
+    setNeedsConfirmation(false);
 
     if (emailError || passwordError || !email.trim() || password.length < 8) {
       return;
@@ -92,6 +94,14 @@ export default function Account({ navigation, route }) {
         throw new Error('Account created, but no user record was returned.');
       }
 
+      // When email confirmation is enabled in Supabase, signUp returns a user
+      // but no active session. The profile write below relies on an authenticated
+      // session (RLS), so defer it and prompt the user to confirm their email.
+      if (!signUpData.session) {
+        setNeedsConfirmation(true);
+        return;
+      }
+
       const { error: upsertError } = await supabase.from('user_profiles').upsert(
         {
           id: userId,
@@ -111,10 +121,8 @@ export default function Account({ navigation, route }) {
         throw upsertError;
       }
 
-      navigation.reset({
-        index: 0,
-        routes: [{ name: 'MainTabs' }],
-      });
+      // No manual navigation needed: the onAuthStateChange listener in App.js
+      // picks up the new session and RootNavigator swaps to the main app.
     } catch (error) {
       setInlineError(error.message || 'Something went wrong while creating your account.');
     } finally {
@@ -175,6 +183,13 @@ export default function Account({ navigation, route }) {
           </TouchableOpacity>
 
           {inlineError ? <Text style={styles.inlineError}>{inlineError}</Text> : null}
+
+          {needsConfirmation ? (
+            <Text style={styles.confirmationText}>
+              Almost there — check your email to confirm your account, then sign in to finish
+              setting up Chaya.
+            </Text>
+          ) : null}
 
           <TouchableOpacity
             style={[styles.button, loading ? styles.buttonDisabled : null]}
@@ -266,6 +281,12 @@ const styles = StyleSheet.create({
   },
   inlineError: {
     color: palette.error,
+    fontSize: 14,
+    marginBottom: 18,
+    lineHeight: 20,
+  },
+  confirmationText: {
+    color: palette.goldSoft,
     fontSize: 14,
     marginBottom: 18,
     lineHeight: 20,
