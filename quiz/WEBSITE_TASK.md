@@ -1,31 +1,34 @@
 # Agent task: add the Spirit Guide quiz to chayathemedium.org
 
 **Repo:** `michaeladane13-dotcom/chaya-the-medium`
-**Goal:** Publish the lead-capture quiz at **`https://chayathemedium.org/spirit-guide-quiz/`** so a Meta ad can drive traffic to it and grow Chaya's newsletter.
+**Goal:** Publish the lead-capture quiz at **`https://chayathemedium.org/spirit-guide-quiz.html`** so a Meta ad can drive traffic to it and grow Chaya's newsletter.
 
-## What to do
+## Exact steps
 
-1. Fetch the finished quiz (single self-contained HTML file, no dependencies):
-   ```
-   https://raw.githubusercontent.com/michaeladane13-dotcom/aiviq-june-media/main/quiz/index.html
-   ```
-   (If not yet on `main`, use branch `claude/newsletter-signup-strategy-MSqvL`.)
+```bash
+# from the repo root, on a fresh branch
+git checkout -b add-spirit-guide-quiz
 
-2. Add it as a statically-served page so it resolves at `/spirit-guide-quiz/`:
-   - **Next.js / most React setups:** save the file to `public/spirit-guide-quiz/index.html`.
-   - **Vite/static:** save to `public/spirit-guide-quiz/index.html` (or wherever `public/` maps to the web root).
-   - If the site prefers a real route, you may instead port it to a page component — but the standalone HTML is intentionally framework-agnostic; serving it statically is the low-risk path. Do **not** wrap it in the site's global layout/nav (it's a full-screen funnel page).
+# pull the finished, self-contained quiz into the static/public dir
+curl -fsSL "https://raw.githubusercontent.com/michaeladane13-dotcom/aiviq-june-media/claude/newsletter-signup-strategy-MSqvL/quiz/index.html" \
+  -o public/spirit-guide-quiz.html
 
-3. Verify after deploy:
-   - `https://chayathemedium.org/spirit-guide-quiz/` loads, the 5 questions advance, and the email gate reveals a result.
-   - A test email submission appears in MailerLite under the **Newsletter** group with the `quiz_result` field populated.
+git add public/spirit-guide-quiz.html
+git commit -m "Add Spirit Guide quiz funnel page"
+git push -u origin add-spirit-guide-quiz
+```
+
+- The file is **one self-contained HTML page** — no imports, no build step, no env vars. It must be served **as-is** (do NOT wrap it in the site's layout/nav; it's a full-screen funnel page).
+- **`public/` is correct for Next.js, Vite, and CRA** — files there are served from the web root. Final URL: `https://chayathemedium.org/spirit-guide-quiz.html`.
+- If the project's static dir is named differently (`static/`, `assets/`), use that instead and report the resulting URL.
+- Want a prettier `/spirit-guide-quiz` URL? Add a host rewrite (`vercel.json` / `netlify.toml`) from `/spirit-guide-quiz` → `/spirit-guide-quiz.html`. Optional.
 
 ## Already wired (do not change)
 - MailerLite account `2234262`, embedded form `189681380338173838`, group **Newsletter** `188125167474443364`.
-- The page POSTs `email`, `name`, and `quiz_result` to MailerLite's public form endpoint — no API key or secret is needed client-side.
-- The "Book Your Personal Reading" CTA links to `https://chayathemedium.org` — repoint it to the actual booking/reading page if there's a better URL.
+- The page POSTs `email`, `name`, and `quiz_result` to MailerLite's public form endpoint — no API key/secret client-side.
+- "Book Your Personal Reading" CTA links to `https://chayathemedium.org` — repoint to the real booking page if there's a better URL.
 
-## Acceptance
-- Clean URL `https://chayathemedium.org/spirit-guide-quiz/` live and mobile-friendly.
-- Test signup lands in the Newsletter group with the archetype captured.
-- Report the final URL back so the Meta ad can be activated against it.
+## Verify, then report back
+1. `https://chayathemedium.org/spirit-guide-quiz.html` loads on mobile; the 5 questions advance; the email gate reveals a result.
+2. A test email shows up in MailerLite under **Newsletter** with the `quiz_result` field populated.
+3. Reply with the final live URL so the Meta ad can be switched on.
