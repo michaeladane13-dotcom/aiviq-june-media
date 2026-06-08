@@ -2,11 +2,11 @@
   "key": "huskies",
   "site_name": "Vancouver Huskies",
   "short_name": "Huskies",
-  "tagline": "Vancouver's pro-track basketball program.",
-  "subtagline": "Train, compete, and earn your shot at the overseas pathway. Navy, red, and white — the Huskies way.",
+  "tagline": "Vancouver Huskies Basketball.",
   "domain_placeholder": "huskies-domain-pending.com",
   "contact_email": "vancouverhuskiesbasketball@gmail.com",
-  "square_link": "#square-link-pending",
+  "square_link": "#",
+  "opl_site_url": "https://opl-domain-pending.com",
   "theme": {
     "navy": "#0b2349",
     "navy_deep": "#071735",
@@ -16,42 +16,41 @@
   },
   "nav": [
     {"label": "Home", "href": "index.html"},
-    {"label": "Roster & Photos", "href": "index.html#gallery"},
     {"label": "Events", "href": "events.html"},
-    {"label": "Sign Up", "href": "signup.html"}
+    {"label": "Sign Up & Pay", "href": "signup.html"}
   ],
+  "gallery": [
+    {"file": "IMG_2080.png", "caption": "Action — driving dunk"},
+    {"file": "IMG_2092.png", "caption": "Players on court"},
+    {"file": "IMG_2081.png", "caption": "Player #11"},
+    {"file": "IMG_2091.png", "caption": "Player #2 portrait"},
+    {"file": "IMG_2094.png", "caption": "Player #3 courtside"},
+    {"file": "IMG_2095.png", "caption": "Teammates on the bench"},
+    {"file": "IMG_2093.png", "caption": "Player on court"}
+  ],
+  "signup_photo": {"file": "IMG_2081.png", "caption": "Vancouver Huskies"},
   "events": [
     {
-      "name": "Huskies Training Sessions",
-      "date_display": "Ongoing — Summer 2026",
-      "date_iso": "2026-06-01",
-      "location": "Vancouver",
-      "status": "Open",
-      "blurb": "Weekly skills, conditioning, and team play for rostered Huskies players."
+      "name": "OPL Overseas Training Camp",
+      "date_display": "September 21 – 28, 2026",
+      "date_iso": "2026-09-21",
+      "location": "Malta",
+      "description": "Professional men's training camp through the Overseas Premier League. Compete in front of team owners and executives."
     },
     {
       "name": "OPL Summer League",
       "date_display": "July 5, 2026",
       "date_iso": "2026-07-05",
       "location": "TBA",
-      "status": "Scheduled",
-      "blurb": "Huskies players compete in the Overseas Premier League Summer League slate."
+      "description": "Summer League play through the Overseas Premier League. Details to be announced."
     },
     {
-      "name": "OPL Overseas Training Camp",
-      "date_display": "September 21 – 28, 2026",
-      "date_iso": "2026-09-21",
-      "location": "Malta",
-      "status": "Pathway opportunity",
-      "blurb": "Eligible Huskies players can carry their game overseas through the OPL camp in Malta."
+      "name": "OPL League Combine",
+      "date_display": "Date TBD",
+      "date_iso": "",
+      "location": "TBA",
+      "description": "League combine. Date and location to be announced."
     }
   ],
-  "gallery": [
-    {"caption": "Game day", "type": "game"},
-    {"caption": "Training session", "type": "training"},
-    {"caption": "Team huddle", "type": "game"},
-    {"caption": "Skills work", "type": "training"},
-    {"caption": "On the break", "type": "game"},
-    {"caption": "Pre-game warmup", "type": "training"}
-  ]
+  "socials": {"instagram": "", "x": "", "tiktok": "", "youtube": ""}
 }

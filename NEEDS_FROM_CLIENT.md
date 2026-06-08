@@ -1,105 +1,98 @@
-# What's Missing — Inputs Needed to Finish OPL + Huskies (Phase 1)
+# What's Missing — Inputs Needed to Go Live (OPL + Huskies, Phase 1)
 
-This is the punch list of everything still blocking or thinning the two sites. Hand
-this to the other Claude chat (the comprehensive one) and have it paste back answers
-in the same numbered structure. Anything you give me, I'll wire in and rebuild.
+Both sites are **built and production-ready** except for the items below. Everything
+here shows as a clearly labelled placeholder slot or a visible "Dev note" on the live
+pages. Sites are on branch `claude/opl-huskies-build-fViVg`:
+`opl-site/` (5 pages) and `huskies-site/` (3 pages).
 
-Sites already built and on branch `claude/opl-huskies-build-fViVg`:
-- `opl-site/` (Home, About/Partnership, Player Placement, Events, Contact)
-- `huskies-site/` (Home + gallery, Events, Sign Up & Pay)
-
-Status key: 🔴 blocks launch · 🟡 placeholder in place, needs real content · 🟢 nice-to-have
+Status: 🔴 blocks launch · 🟡 placeholder in place · 🟢 nice-to-have
 
 ---
 
-## 1. 🔴 Logos & brand art (files STILL NOT reaching the build environment)
-Two briefs have referenced files in `/mnt/user-data/uploads/`, but that folder does
-not exist in my session and the named files (incl. the Aiviq `A1AF4F72…` and
-`CA56CA7D…` PNGs) are nowhere on the filesystem. **The uploads aren't getting to me.**
-Until they do: the OPL logo is a faithful SVG recreation from the description, the
-Aiviq footer uses an SVG gold mark, and all photos are placeholder slots.
+## 0. 🔴 IMPORTANT: image uploads are NOT reaching the build environment
+Every brief has referenced files in `/mnt/user-data/uploads/`, but **that folder does
+not exist in my session** and none of the named files (`IMG_2080–2095`, `IMG_2090`,
+the Aiviq `A1AF4F72…` / `CA56CA7D…` PNGs) are anywhere on the filesystem. So far I have
+received **zero image files**. The build is fully wired to use them — drop each file
+into `site-builder/assets/<opl|huskies|aiviq>/` with the exact name and rerun the
+build and the placeholders swap to real images automatically — but I need the files to
+actually arrive. **Please re-attach them directly in chat** so I can confirm receipt.
 
-Please provide (PNG or SVG, transparent background preferred) — and confirm how you're
-attaching them, since the upload path isn't working:
-- [x] **OPL primary logo** — recreated as SVG from the description (globe forming an
-      "O" with white cut-out, basketball seams, plane, blue/red). Swap for final art when sent.
-- [ ] **Aiviq Enterprises Inc. logo** (gold on black) for the footer — file referenced
-      but not received; currently an SVG gold-diamond stand-in.
-- [ ] **OPL logo on dark** variant if you have one (for the navy header)
-- [ ] **Vancouver Huskies logo** (the wolf mark from the jersey photos)
-- [ ] **Valletta BC logo** (used on OPL Home + About partnership sections)
-- [ ] **Aiviq gold mark** (currently a stand-in gold diamond in the footer)
-- [ ] **Favicon** for each site (or I'll generate from the logos)
+## 1. 🔴 Logos
+- [ ] **OPL logo** `IMG_2090.png` — currently a faithful SVG recreation from your
+      description (globe + white "O" + basketball seams + red plane). Swaps in on upload.
+- [ ] **Aiviq Enterprises Inc. logo** (gold on black) for both footers — SVG gold mark
+      stand-in until received. Save as `assets/aiviq/aiviq-enterprises.png`.
+- [ ] **Vancouver Huskies wolf logo** — PENDING per brief; placeholder slot on Huskies
+      home + nav SVG stand-in.
+- [ ] **Valletta BC logo** — PENDING per brief; placeholder slot on OPL About page.
 
-## 2. 🔴 Domain names
-Both sites use `*-domain-pending.com` placeholders in canonical tags, sitemaps, footers.
+## 2. 🔴 Domains
+Both use `*-domain-pending.com` in canonical tags, sitemaps, footers, and the Huskies→OPL
+partner link.
 - [ ] **OPL domain:** ____________________
 - [ ] **Huskies domain:** ____________________
-- [ ] Where will each be hosted? (Netlify / Vercel / Cloudflare Pages / GitHub Pages /
-      other) — affects nothing in the code, but I can prep deploy config if you tell me.
 
 ## 3. 🔴 Square payment link (Huskies)
-The "Sign Up & Pay via Square" button is a labelled placeholder until I have the URL.
-- [ ] **Square checkout/payment link:** ____________________
-- [ ] Is it one link for everyone, or different links per program/fee? If multiple,
-      give me the label + URL for each and I'll add buttons.
+"Sign Up & Pay via Square" is a labelled, disabled placeholder until provided.
+- [ ] **Square link URL:** ____________________  (set `square_link` in `huskies.json`)
 
-## 4. 🟡 Player & action photos
-Game and training shots go into the photo slots (Huskies home gallery + several
-OPL/Huskies pages). None were available, so all are placeholders.
-- [ ] **Huskies game photos** (the more the better; I'll size/crop)
-- [ ] **Huskies training photos**
-- [ ] **Huskies team/group photo** (used on the Sign Up page)
-- [ ] **OPL / Malta placement imagery** (the ProConnect flyer visuals referenced in
-      the brief) for the Player Placement page
-- [ ] Any **hero/background photo** you want behind the home headlines (optional —
-      they currently use a clean navy gradient)
+## 4. 🔴 OPL contact email
+Huskies email is set (`vancouverhuskiesbasketball@gmail.com`). OPL's is PENDING per the
+brief — Contact page + footer show "pending".
+- [ ] **OPL contact email:** ____________________  (set `contact_email` in `opl.json`)
 
-## 5. 🟡 Contact details
-- [x] **Email confirmed:** `vancouverhuskiesbasketball@gmail.com` — now wired into both
-      sites' contact links and footers.
-- [ ] **Phone number?** (optional — not currently shown)
-- [ ] **Social links** (Instagram / X / TikTok / YouTube) for headers/footers? (optional)
-- [ ] **Physical location** to list for the Huskies (Vancouver venue/gym)? (optional)
+## 5. 🟡 Player photos (Huskies)
+Gallery + sign-up use labelled slots naming each expected file. Send the images and
+they auto-populate:
+- [ ] `IMG_2080` (dunk), `IMG_2081` (#11), `IMG_2091` (#2 portrait), `IMG_2092`
+      (court), `IMG_2093`, `IMG_2094` (#3), `IMG_2095` (bench). (`IMG_2082` is a
+      duplicate of `IMG_2081` and is skipped.)
 
-## 6. 🟡 Copy review / corrections
-I wrote launch copy from the brief + verifiable public Malta/FIBA facts. Please confirm
-or correct:
-- [ ] The **Valletta BC partnership** wording ("official player-placement partner") —
-      accurate as stated? Any specific phrasing the partner requires?
-- [ ] **"FIBA-licensed / EuroBasket-eligible"** — confirm we can claim both publicly,
-      and in these exact words.
-- [ ] **Malta package perks** — confirm the list is complete/correct: FIBA Registration,
-      Malta Basketball Association Registration, VISA (90+ day stays), Gym Membership,
-      Transportation & Housing, Media Package. Anything to add/remove?
-- [ ] **Camp package** — Accommodations (7 days), Merch (reversible/t-shirt/shorts),
-      Transportation (airport & gym), Media (film & interviews), Food (2 meals/day).
-      Correct?
-- [ ] **Pricing** — should any prices/fees appear on the sites, or stay off until Square?
-- [ ] Tagline/positioning — happy with the current OPL and Huskies headlines, or send
-      preferred wording.
+## 6. 🟡 OPL placement flyers
+- [ ] `IMG_2087.png` (placement package flyer) → Player Placement card 1
+- [ ] `IMG_2088.png` (training camp flyer) → Player Placement card 2
 
-## 7. 🟡 Events — confirm & extend
-Currently live: OPL Overseas Training Camp (Sept 21–28 2026), OPL Summer League
-(July 5 2026), OPL League Combine (TBD); Huskies training (ongoing) + the two OPL events.
-- [ ] Confirm those dates/locations.
-- [ ] **Combine date** when known.
-- [ ] **Specific venues/cities** for Summer League and Combine (currently "TBA").
-- [ ] Any **other events** to list on either site?
-- [ ] Should events have a **register/RSVP link** (Square, form, email)?
+## 7. 🟡 Social media links (both sites)
+Footer shows IG / X / TikTok / YouTube icons labelled "pending".
+- [ ] Instagram / X / TikTok / YouTube URLs for each site (set `socials` in the JSON).
 
-## 8. 🟢 Comprehensive Claude chat — anything else
-If the other chat covered things not in my build brief, send them:
-- [ ] Extra **pages or sections** you want (e.g. testimonials, FAQ, roster bios,
-      sponsors, news/blog).
-- [ ] Specific **brand fonts** or an exact hex palette (I used navy `#0b2349`,
-      red `#c8102e`, white, Aiviq gold `#c9a64a`).
-- [ ] Any **legal/footer** text (privacy, terms, refund policy for Square payments).
-- [ ] **Analytics** (Google Analytics / Meta Pixel ID) to embed.
+## 8. 🟡 Event register / RSVP links (OPL)
+Each OPL event card has a "Register / RSVP (link pending)" button.
+- [ ] RSVP/registration URL per event (Camp / Summer League / Combine), or one shared.
+- [ ] **Combine date & location** when known; **Summer League location** (currently TBA).
+- [ ] Any **Huskies-specific local events** (training schedules, local games) — the
+      Huskies Events page has a labelled placeholder for these.
+
+## 9. 🟡 Copy sign-off (visible "Dev note" boxes on the live pages)
+Confirm before launch so I can remove the notes:
+- [ ] "Official player placement partner" wording — approved by **Valletta BC**?
+- [ ] **"FIBA Licensed"** and **"EuroBasket Eligible"** — OK to claim publicly in these
+      exact words?
+- [ ] Player **perks** list complete/accurate? (FIBA Reg, Malta Basketball Assoc Reg,
+      VISA 90+ days, Gym Membership, Transportation & Housing, Media Package)
+- [ ] Camp **tour package** complete/accurate? (Accommodations 7 days, Merch
+      reversible/t-shirt/shorts, Transport airport & gym, Media film & interviews,
+      Food 2 meals/day)
+
+## 10. ⚠️ Scope conflict to resolve — Las Vegas Empress / Shine On
+The asset list includes `IMG_2089` (Las Vegas Empress flyer), `IMG_2083` (Shine On
+logo), and `IMG_2084` (Las Vegas Empress logo), with `IMG_2089` noted "use on OPL
+Player Placement page." But the **OUT OF SCOPE** section says *do not build, do not
+reference* Las Vegas Empress or Shine On. The detailed page content also only assigns
+`IMG_2087`/`IMG_2088` to that page. I followed **OUT OF SCOPE** and did **not** use
+those three files.
+- [ ] Confirm: leave them out (current), **or** tell me exactly where the Vegas Empress
+      partner announcement should appear and I'll add it.
 
 ---
 
+## Note on research tooling
+The brief asked for Perplexity MCP research; no Perplexity server was connected to my
+session. I used web search instead and kept copy to client-provided text plus
+verifiable Malta/FIBA facts (Malta Basketball Association is a FIBA member; runs the
+top men's division). No facts, names, emails, or URLs were invented.
+
 ### How to send it back
-Easiest: answer inline under each number. Drop image/logo files anywhere I can read
-them and tell me the path, or attach them. Once I have items 1–3 I can take both sites
-from "placeholder" to "launch-ready."
+Answer inline under each number, and **attach the image files in chat** (the
+`/mnt/user-data/uploads/` path is not reaching me). Items 0–4 are the true blockers.

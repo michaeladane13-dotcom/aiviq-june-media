@@ -2,10 +2,10 @@
   "key": "opl",
   "site_name": "Overseas Premier League",
   "short_name": "OPL",
-  "tagline": "Placing North American players on professional courts overseas.",
-  "subtagline": "FIBA-licensed pathways. EuroBasket-eligible competition. A direct route from your hometown gym to a professional men's roster in Malta.",
+  "tagline": "Your path to professional basketball overseas.",
   "domain_placeholder": "opl-domain-pending.com",
-  "contact_email": "vancouverhuskiesbasketball@gmail.com",
+  "contact_email": "",
+  "opl_site_url": "https://opl-domain-pending.com",
   "theme": {
     "navy": "#0b2349",
     "navy_deep": "#071735",
@@ -26,44 +26,22 @@
       "date_display": "September 21 – 28, 2026",
       "date_iso": "2026-09-21",
       "location": "Malta",
-      "status": "Registration open",
-      "blurb": "Seven days of professional-level training, film, and exposure on the island that hosts FIBA-sanctioned competition."
+      "description": "Professional men's training camp. Compete in front of team owners and executives. Opportunities to sign with 1st or 2nd Division."
     },
     {
       "name": "OPL Summer League",
       "date_display": "July 5, 2026",
       "date_iso": "2026-07-05",
       "location": "TBA",
-      "status": "Scheduled",
-      "blurb": "Summer runs to keep placement-track players sharp and in front of scouts ahead of the overseas season."
+      "description": "Summer League play. Details to be announced."
     },
     {
       "name": "OPL League Combine",
       "date_display": "Date TBD",
       "date_iso": "",
       "location": "TBA",
-      "status": "Coming soon",
-      "blurb": "A measured, scouted combine feeding the North American Scouting Combine pipeline. Date to be announced."
+      "description": "League combine. Date and location to be announced."
     }
   ],
-  "perks": [
-    "FIBA Registration",
-    "Malta Basketball Association Registration",
-    "VISA support for stays over 90 days",
-    "Gym Membership Fee covered",
-    "Transportation & Housing",
-    "Media Package (film & interviews)"
-  ],
-  "camp_includes": [
-    {"title": "Accommodations", "detail": "7 days of lodging on the island."},
-    {"title": "Merch", "detail": "Reversible jersey, t-shirt, and shorts."},
-    {"title": "Transportation", "detail": "Airport and gym transfers handled."},
-    {"title": "Media", "detail": "Game film and player interviews."},
-    {"title": "Food", "detail": "Two meals per day throughout the camp."}
-  ],
-  "channels": [
-    {"title": "Direct Player Placement", "detail": "Sign directly with a professional men's team in Malta through our Valletta BC partnership — FIBA-licensed and EuroBasket-eligible."},
-    {"title": "Overseas Tours", "detail": "Structured overseas trips that put North American players inside live professional environments, training, and competition."},
-    {"title": "North American Scouting Combine", "detail": "Scouted, measured combine events that identify and develop players for overseas placement."}
-  ]
+  "socials": {"instagram": "", "x": "", "tiktok": "", "youtube": ""}
 }
