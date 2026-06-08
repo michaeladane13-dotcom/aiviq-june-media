@@ -1,0 +1,59 @@
+name: Multi-platform poster
+
+# Posts due Instagram / Facebook / TikTok reels on a schedule and commits the
+# dedup state (post_done.json) back to the repo.
+#
+# IMPORTANT: GitHub only runs `schedule` triggers from the default branch
+# (main). This workflow does nothing on feature branches. To go live, merge to
+# main and set the META_CREDS / TIKTOK_CREDS repo secrets.
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"   # every 30 minutes; posts whatever is due
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Log what would post without posting"
+        type: boolean
+        default: true
+      backlog_hours:
+        description: "Only post items due within this many hours (0 = no limit)"
+        default: "12"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: poster
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Post due reels
+        env:
+          META_CREDS: ${{ secrets.META_CREDS }}
+          TIKTOK_CREDS: ${{ secrets.TIKTOK_CREDS }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '1' || '' }}
+          BACKLOG_HOURS: ${{ github.event_name == 'workflow_dispatch' && inputs.backlog_hours || '12' }}
+        run: python post.py
+
+      - name: Commit updated dedup state
+        if: ${{ github.event_name != 'workflow_dispatch' || !inputs.dry_run }}
+        run: |
+          if ! git diff --quiet -- post_done.json; then
+            git config user.name "aiviq-poster"
+            git config user.email "bot@aiviq"
+            git add post_done.json
+            git commit -m "poster: record posted reels"
+            git push
+          else
+            echo "No new posts to record."
+          fi
