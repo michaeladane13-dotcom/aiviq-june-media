@@ -257,6 +257,43 @@ def event_cards(events, with_cta=True):
     return '<div class="event-grid">' + "\n".join(cards) + "</div>"
 
 
+def closer(kicker, title, text, label, href, dark=True):
+    """Flat, left-aligned end-of-page CTA. Dark band for home pages, light hairline
+    row for inner pages -- varied so it never reads as a repeated template block."""
+    if dark:
+        return f"""<section class="closer closer-dark">
+  <div class="container closer-in">
+    <div class="closer-copy"><span class="kicker red">{esc(kicker)}</span><h2>{esc(title)}</h2><p>{esc(text)}</p></div>
+    <a class="btn btn-gold btn-lg" href="{esc(href)}">{esc(label)}</a>
+  </div>
+</section>"""
+    return f"""<section class="closer closer-light">
+  <div class="container closer-in">
+    <div class="closer-copy"><span class="kicker">{esc(kicker)}</span><h2>{esc(title)}</h2></div>
+    <a class="btn btn-line btn-lg" href="{esc(href)}">{esc(label)} &rarr;</a>
+  </div>
+</section>"""
+
+
+def page_hero(eyebrow, h1, lead="", index="", ghost=""):
+    """Editorial page header: small index marker, big display headline, hairline rule,
+    plus a faint oversized numeral (OPL) or ghost wordmark (Huskies) for atmosphere."""
+    decor = ""
+    if index:
+        decor = f'<span class="ph-num" aria-hidden="true">{esc(index)}</span>'
+    elif ghost:
+        decor = f'<span class="ph-ghost" aria-hidden="true">{esc(ghost)}</span>'
+    lead_html = f'<p class="lead">{esc(lead)}</p>' if lead else ""
+    return f"""<section class="page-hero">
+  {decor}
+  <div class="container ph-inner stagger">
+    <span class="eyebrow">{esc(eyebrow)}</span>
+    <h1>{h1}</h1>
+    {lead_html}
+  </div>
+</section>"""
+
+
 # --------------------------------------------------------------------------- #
 # OPL site  (institutional voice)
 # --------------------------------------------------------------------------- #
@@ -300,25 +337,13 @@ def build_opl(cfg):
     <ol class="routes">{route_html}</ol>
   </div>
 </section>
-<section class="dark cta-band">
-  <div class="container"><div class="banner">
-    <span class="kicker red">Malta</span>
-    <h2>Placement runs through Malta</h2>
-    <p>Review the placement package and the training camp.</p>
-    <a class="btn btn-gold btn-lg" href="placement.html">Player placement</a>
-  </div></div>
-</section>"""
+{closer("Malta", "Placement runs through Malta", "Review the placement package and the training camp.", "Player placement", "placement.html", dark=True)}"""
     pages["index.html"] = page(cfg, mark, slug="", title=cfg["site_name"],
         description="OPL places North American players with FIBA licensed professional clubs in Europe. FIBA Licensed. EuroBasket Eligible.",
         body=home, active="index.html")
 
     # About
-    about = f"""<section class="page-hero">
-  <div class="container ph-inner stagger">
-    <span class="eyebrow">About</span>
-    <h1>The league and its partnership</h1>
-  </div>
-</section>
+    about = f"""{page_hero("About", "The league and its partnership", index="01")}
 <section>
   <div class="container split">
     <div class="prose">
@@ -336,26 +361,13 @@ def build_opl(cfg):
     <div>{logo_slot('Valletta BC logo', light=True)}</div>
   </div>
 </section>
-<section class="dark cta-band">
-  <div class="container"><div class="banner">
-    <span class="kicker red">The pipeline</span>
-    <h2>From combine to contract</h2>
-    <p>Direct placement, overseas tours, and the scouting combine feed one pipeline.</p>
-    <a class="btn btn-gold btn-lg" href="placement.html">Player placement</a>
-  </div></div>
-</section>"""
+{closer("The pipeline", "From combine to contract", "", "Player placement", "placement.html", dark=False)}"""
     pages["about.html"] = page(cfg, mark, slug="about.html", title="About",
         description="A formal partnership with Valletta BC makes the Overseas Premier League an official player placement partner, delivered through direct placement, overseas tours, and a North American scouting combine.",
         body=about, active="about.html")
 
     # Player Placement
-    placement = f"""<section class="page-hero">
-  <div class="container ph-inner stagger">
-    <span class="eyebrow">Player Placement</span>
-    <h1>Two ways into the professional game</h1>
-    <p class="lead">FIBA Licensed. EuroBasket Eligible. Players must be passport ready.</p>
-  </div>
-</section>
+    placement = f"""{page_hero("Player Placement", "Two ways into the professional game", lead="FIBA Licensed. EuroBasket Eligible. Players must be passport ready.", index="02")}
 <section>
   <div class="container">
     <div class="offer-grid">
@@ -398,39 +410,23 @@ def build_opl(cfg):
     {dev_note('Confirm "FIBA Licensed" and "EuroBasket Eligible" can be claimed publicly in these exact words before launch.')}
   </div>
 </section>
-<section class="dark cta-band">
-  <div class="container"><div class="banner">
-    <span class="kicker red">2026</span>
-    <h2>Camps and league dates</h2>
-    <p>See the schedule.</p>
-    <a class="btn btn-gold btn-lg" href="events.html">Events</a>
-  </div></div>
-</section>"""
+{closer("Schedule", "Camps and league dates", "", "See 2026 events", "events.html", dark=False)}"""
     pages["placement.html"] = page(cfg, mark, slug="placement.html", title="Player Placement",
         description="Overseas player placement package and overseas training camp in Malta. FIBA Licensed, EuroBasket Eligible. Perks include FIBA and MBA registration, VISA, housing, transport, and a media package.",
         body=placement, active="placement.html")
 
     # Events
-    events = f"""<section class="page-hero">
-  <div class="container ph-inner stagger">
-    <span class="eyebrow">Events</span>
-    <h1>The 2026 schedule</h1>
-  </div>
-</section>
+    events = f"""{page_hero("Events", "The 2026 schedule", index="03")}
 <section>
   <div class="container">{event_cards(cfg['events'], with_cta=True)}</div>
-</section>"""
+</section>
+{closer("Placement", "Sign with a club overseas", "", "Player placement", "placement.html", dark=False)}"""
     pages["events.html"] = page(cfg, mark, slug="events.html", title="Events",
         description="OPL 2026 events: Overseas Training Camp (Sept 21 to 28, Malta), Summer League (July 5), and the League Combine (TBD).",
         body=events, active="events.html")
 
     # Contact
-    contact = f"""<section class="page-hero">
-  <div class="container ph-inner stagger">
-    <span class="eyebrow">Contact</span>
-    <h1>League office</h1>
-  </div>
-</section>
+    contact = f"""{page_hero("Contact", "League office", index="04")}
 <section>
   <div class="container split">
     <div class="prose">
@@ -494,25 +490,18 @@ def build_huskies(cfg):
     <div class="gallery-grid">{gallery}</div>
   </div>
 </section>
-<section class="dark cta-band">
-  <div class="container"><div class="banner">
-    <span class="kicker red">Roster spots open</span>
-    <h2>Ready to play?</h2>
-    <p>Register and pay through our Square account.</p>
+<section class="closer closer-dark">
+  <div class="container closer-in">
+    <div class="closer-copy"><span class="kicker red">Roster spots open</span><h2>Ready to play?</h2><p>Register and pay through our Square account.</p></div>
     {square_btn}
-  </div></div>
+  </div>
 </section>"""
     pages["index.html"] = page(cfg, mark, slug="", title=cfg["site_name"],
         description="Vancouver Huskies basketball. Train, compete, and put your game on film. A Vancouver development program affiliated with the Overseas Premier League.",
         body=home, active="index.html")
 
     # Events
-    events = f"""<section class="page-hero">
-  <div class="container ph-inner stagger">
-    <span class="eyebrow">Events</span>
-    <h1>Where we play</h1>
-  </div>
-</section>
+    events = f"""{page_hero("Events", "Where we play", ghost="HUSKIES")}
 <section>
   <div class="container">
     <div class="section-head"><span class="kicker">Through the OPL</span><h2>League events</h2></div>
@@ -528,7 +517,8 @@ def build_huskies(cfg):
       <span class="fname">Pending from client</span>
     </div>
   </div>
-</section>"""
+</section>
+{closer("Registration", "Join the Huskies", "", "Sign up and pay", "signup.html", dark=False)}"""
     pages["events.html"] = page(cfg, mark, slug="events.html", title="Events",
         description="Vancouver Huskies events: OPL Overseas Training Camp (Sept 21 to 28), OPL Summer League (July 5), OPL League Combine (TBD), plus local Huskies events.",
         body=events, active="events.html")
@@ -537,12 +527,7 @@ def build_huskies(cfg):
     sp = cfg.get("signup_photo", {"file": "IMG_2081.png", "caption": "Vancouver Huskies"})
     note = (dev_note('Square payment link is pending from the client. Set "square_link" in content/huskies.json and '
                      'rebuild. The button switches to the real checkout automatically.') if square_pending else "")
-    signup = f"""<section class="page-hero">
-  <div class="container ph-inner stagger">
-    <span class="eyebrow">Sign Up &amp; Pay</span>
-    <h1>Join the Huskies</h1>
-  </div>
-</section>
+    signup = f"""{page_hero("Sign Up & Pay", "Join the Huskies", ghost="HUSKIES")}
 <section>
   <div class="container split">
     <div class="prose">
@@ -624,24 +609,20 @@ h1,h2,h3 {{ font-family:var(--display); font-weight:{h_weight}; letter-spacing:{
 .nav-toggle {{ display:none; }}
 
 /* hero */
-.hero {{ position:relative; overflow:hidden; background:var(--navy-deep); color:#fff; }}
-.hero::before {{ content:""; position:absolute; inset:0; background:
-  radial-gradient(120% 90% at 78% -10%, rgba(28,79,160,.45), transparent 55%),
-  radial-gradient(80% 70% at 12% 110%, rgba(200,16,46,.18), transparent 60%); z-index:0; }}
-.hero .grain, .hero::after, .page-hero::after {{}}
-.hero .hero-inner {{ position:relative; z-index:3; padding:5rem 0 4.5rem; max-width:820px; }}
-.hero .hero-inner::before {{ content:""; position:absolute; inset:0; background-image:var(--grain); opacity:.07; mix-blend-mode:overlay; pointer-events:none; }}
+.hero {{ position:relative; overflow:hidden; background:linear-gradient(176deg,var(--navy) 0%,var(--navy-deep) 78%); color:#fff; }}
+.hero::before {{ content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.28)); z-index:0; }}
+.hero .hero-inner {{ position:relative; z-index:3; padding:6rem 0 5rem; max-width:860px; }}
+.hero .hero-inner::before {{ content:""; position:absolute; inset:0; background-image:var(--grain); opacity:.05; pointer-events:none; }}
 {hero_extra}
-.eyebrow {{ display:inline-block; font-family:var(--body); text-transform:uppercase; letter-spacing:.26em; font-size:.7rem;
-  font-weight:700; color:var(--gold); padding:.35rem 0; margin-bottom:.9rem; border-top:1px solid rgba(201,166,74,.5);
-  border-bottom:1px solid rgba(201,166,74,.5); }}
-.hero h1 {{ font-size:{hero_h1}; line-height:{hero_lh}; margin:.3rem 0 1.1rem; text-transform:{h_transform};
-  max-width:14ch; overflow-wrap:break-word; }}
-.hero p.lead {{ font-family:var(--body); font-size:clamp(1.05rem,2vw,1.28rem); color:#d7deec; margin:0 0 1.9rem; max-width:54ch; }}
+.eyebrow {{ display:inline-flex; align-items:center; gap:.7rem; font-family:var(--body); text-transform:uppercase; letter-spacing:.26em;
+  font-size:.7rem; font-weight:700; color:var(--gold); margin-bottom:1.1rem; }}
+.eyebrow::before {{ content:""; width:22px; height:2px; background:var(--red); flex:0 0 auto; }}
+.hero h1 {{ font-size:{hero_h1}; line-height:{hero_lh}; margin:.3rem 0 1.2rem; text-transform:{h_transform};
+  max-width:15ch; overflow-wrap:break-word; }}
+.hero p.lead {{ font-family:var(--body); font-size:clamp(1.05rem,2vw,1.28rem); color:#d7deec; margin:0 0 2rem; max-width:54ch; }}
 
-.hero-logo {{ max-height:88px; width:auto; margin-bottom:1.3rem; }}
-.hero-logo-lockup {{ display:inline-flex; align-items:center; gap:1rem; margin-bottom:1.4rem; max-width:100%; flex-wrap:wrap;
-  background:rgba(255,255,255,.05); border:1px solid var(--line); padding:.7rem 1.1rem; border-radius:10px; }}
+.hero-logo {{ max-height:88px; width:auto; margin-bottom:1.4rem; }}
+.hero-logo-lockup {{ display:inline-flex; align-items:center; gap:.9rem; margin-bottom:1.6rem; max-width:100%; flex-wrap:wrap; }}
 .hero-logo-lockup .mark {{ width:60px; height:60px; }}
 .hl-word {{ display:flex; flex-direction:column; gap:.4rem; min-width:0; }}
 .hl-word strong {{ font-family:var(--body); color:#fff; letter-spacing:.22em; font-size:clamp(.66rem,2.4vw,.85rem); overflow-wrap:break-word; }}
@@ -650,30 +631,35 @@ h1,h2,h3 {{ font-family:var(--display); font-weight:{h_weight}; letter-spacing:{
 
 /* buttons */
 .cta-row {{ display:flex; gap:.8rem; flex-wrap:wrap; }}
-.btn {{ display:inline-block; font-family:var(--body); font-weight:700; letter-spacing:.04em; padding:.85rem 1.6rem;
-  border-radius:7px; border:1.5px solid transparent; cursor:pointer; font-size:.98rem; transition:transform .2s ease,
-  background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease; }}
+.btn {{ display:inline-block; font-family:var(--body); font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+  font-size:.82rem; padding:.9rem 1.7rem; border-radius:3px; border:1.5px solid transparent; cursor:pointer;
+  transition:transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease; }}
 .btn:hover {{ transform:translateY(-2px); text-decoration:none; }}
-.btn-primary {{ background:var(--red); color:#fff; box-shadow:0 8px 22px rgba(200,16,46,.28); }}
-.btn-primary:hover {{ background:#aa0c25; box-shadow:0 12px 28px rgba(200,16,46,.38); }}
-.btn-ghost {{ background:transparent; color:#fff; border-color:rgba(255,255,255,.45); }}
+.btn-primary {{ background:var(--red); color:#fff; }}
+.btn-primary:hover {{ background:#aa0c25; }}
+.btn-ghost {{ background:transparent; color:#fff; border-color:rgba(255,255,255,.4); }}
 .btn-ghost:hover {{ background:#fff; color:var(--navy-deep); border-color:#fff; }}
 .btn-line {{ background:transparent; color:var(--navy); border-color:var(--navy); }}
 .btn-line:hover {{ background:var(--navy); color:#fff; }}
-.btn-gold {{ background:var(--gold); color:var(--navy-deep); box-shadow:0 8px 22px rgba(201,166,74,.25); }}
-.btn-gold:hover {{ filter:brightness(1.06); }}
+.btn-gold {{ background:var(--gold); color:var(--navy-deep); }}
+.btn-gold:hover {{ background:#d8b75c; }}
 .btn-lg {{ padding:1.05rem 2.1rem; font-size:1.06rem; }}
 .btn-sm {{ padding:.55rem 1.05rem; font-size:.85rem; }}
 .pending-btn {{ opacity:.95; outline:2px dashed var(--gold); outline-offset:3px; cursor:not-allowed; }}
 .pending-btn em {{ font-style:normal; font-weight:600; font-size:.8em; opacity:.85; }}
 
 /* sections */
-section {{ padding:5rem 0; }}
-.page-hero {{ position:relative; overflow:hidden; background:var(--navy-deep); color:#fff; padding:3.5rem 0; }}
-.page-hero::before {{ content:""; position:absolute; inset:0; background:radial-gradient(90% 120% at 85% -20%, rgba(28,79,160,.4), transparent 55%); }}
+section {{ padding:5.5rem 0; }}
+.page-hero {{ position:relative; overflow:hidden; background:linear-gradient(176deg,var(--navy) 0%,var(--navy-deep) 80%);
+  color:#fff; padding:4.2rem 0 2.8rem; border-bottom:1px solid var(--line); }}
+.page-hero::before {{ content:""; position:absolute; inset:0; background-image:var(--grain); opacity:.05; pointer-events:none; }}
 .page-hero .ph-inner {{ position:relative; z-index:2; }}
-.page-hero h1 {{ font-size:clamp(2rem,5vw,3.4rem); margin:.4rem 0 0; text-transform:{h_transform}; }}
+.page-hero h1 {{ font-size:clamp(2.2rem,5.6vw,3.9rem); margin:.4rem 0 0; text-transform:{h_transform}; }}
 .page-hero .lead {{ font-family:var(--body); color:#d7deec; margin:1rem 0 0; max-width:60ch; font-size:1.1rem; }}
+.ph-num {{ position:absolute; right:max(4vw,1rem); top:50%; transform:translateY(-46%); font-family:var(--display); font-weight:{h_weight};
+  font-size:clamp(6rem,18vw,13rem); line-height:.8; color:rgba(255,255,255,.06); z-index:1; pointer-events:none; }}
+.ph-ghost {{ position:absolute; right:-2%; bottom:-30%; font-family:var(--display); font-weight:800; text-transform:uppercase;
+  letter-spacing:-.03em; font-size:clamp(5rem,17vw,13rem); line-height:.8; color:rgba(255,255,255,.05); z-index:1; pointer-events:none; white-space:nowrap; }}
 .section-head {{ max-width:760px; margin-bottom:2.6rem; }}
 .section-head h2 {{ font-size:clamp(1.7rem,3.6vw,2.6rem); color:var(--navy); margin:.4rem 0 0; text-transform:{h_transform}; }}
 .kicker {{ font-family:var(--body); text-transform:uppercase; letter-spacing:.24em; font-size:.7rem; font-weight:700; color:var(--red); }}
@@ -701,10 +687,10 @@ section {{ padding:5rem 0; }}
 .r-body p {{ color:#4a5870; font-size:1.08rem; margin:0; }}
 
 /* cards */
-.card {{ position:relative; background:#fff; border:1px solid var(--hair); border-radius:12px; padding:1.6rem;
-  transition:transform .25s ease, box-shadow .25s ease; overflow:hidden; }}
+.card {{ position:relative; background:#fff; border:1px solid var(--hair); border-radius:5px; padding:1.7rem;
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; overflow:hidden; }}
 .card::before {{ content:""; position:absolute; top:0; left:0; height:3px; width:0; background:var(--red); transition:width .3s ease; }}
-.card:hover {{ transform:translateY(-6px); box-shadow:0 20px 44px rgba(11,35,73,.14); }}
+.card:hover {{ transform:translateY(-4px); box-shadow:0 14px 32px rgba(11,35,73,.09); border-color:#d3dae8; }}
 .card:hover::before {{ width:100%; }}
 .card h3 {{ margin:.4rem 0 .5rem; color:var(--navy); font-size:1.2rem; text-transform:{h_transform}; }}
 
@@ -717,9 +703,9 @@ section {{ padding:5rem 0; }}
 
 /* offer cards (asymmetric on desktop) */
 .offer-grid {{ display:grid; grid-template-columns:1fr 1fr; gap:1.8rem; align-items:start; }}
-.offer-card {{ border:1px solid var(--hair); border-radius:14px; overflow:hidden; background:#fff; display:flex; flex-direction:column;
-  transition:transform .25s ease, box-shadow .25s ease; }}
-.offer-card:hover {{ transform:translateY(-5px); box-shadow:0 22px 50px rgba(11,35,73,.16); }}
+.offer-card {{ border:1px solid var(--hair); border-radius:6px; overflow:hidden; background:#fff; display:flex; flex-direction:column;
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; }}
+.offer-card:hover {{ transform:translateY(-4px); box-shadow:0 16px 38px rgba(11,35,73,.10); border-color:#d3dae8; }}
 .offer-card:nth-child(2) {{ margin-top:3.5rem; }}
 .offer-card .offer-body {{ padding:1.7rem; }}
 .offer-card h2 {{ color:var(--navy); margin:.2rem 0 .5rem; font-size:1.5rem; text-transform:{h_transform}; }}
@@ -729,9 +715,9 @@ section {{ padding:5rem 0; }}
 /* events */
 .event-grid {{ display:grid; gap:1.1rem; }}
 .event-card {{ display:grid; grid-template-columns:108px 1fr; gap:1.4rem; align-items:start; border:1px solid var(--hair);
-  border-radius:12px; padding:1.4rem; background:#fff; transition:transform .25s ease, box-shadow .25s ease; }}
-.event-card:hover {{ transform:translateY(-4px); box-shadow:0 16px 36px rgba(11,35,73,.12); }}
-.event-card .date {{ text-align:center; background:var(--navy); color:#fff; border-radius:10px; padding:1rem .5rem; font-family:var(--display);
+  border-radius:6px; padding:1.4rem; background:#fff; transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; }}
+.event-card:hover {{ transform:translateY(-3px); box-shadow:0 12px 28px rgba(11,35,73,.08); border-color:#d3dae8; }}
+.event-card .date {{ text-align:center; background:var(--navy); color:#fff; border-radius:4px; padding:1rem .5rem; font-family:var(--display);
   font-weight:{h_weight}; font-size:1.7rem; line-height:1; }}
 .event-card .date .d {{ display:block; font-family:var(--body); font-size:.72rem; color:var(--gold); letter-spacing:.12em; margin-bottom:.3rem; }}
 .event-card h3 {{ margin:0 0 .2rem; color:var(--navy); font-size:1.3rem; text-transform:{h_transform}; }}
@@ -739,17 +725,23 @@ section {{ padding:5rem 0; }}
 .event-card p {{ margin:0 0 .7rem; color:#51607a; font-family:var(--body); font-size:.96rem; }}
 
 /* media + slots */
-.media {{ margin:0; }}
-.media img {{ width:100%; height:100%; object-fit:cover; border-radius:12px; }}
+.media {{ margin:0; overflow:hidden; }}
+.media img {{ width:100%; height:100%; object-fit:cover; border-radius:6px; }}
 .offer-card .media img {{ border-radius:0; }}
-.gallery-grid {{ display:grid; grid-template-columns:repeat(3,1fr); grid-auto-rows:200px; gap:14px; }}
-.gallery-grid > * {{ height:100%; }}
-.gallery-grid .photo-slot {{ height:100%; }}
-.gallery-grid .media, .gallery-grid .media img {{ height:100%; }}
+/* gallery: contact sheet */
+.gallery-grid {{ display:grid; grid-template-columns:repeat(3,1fr); grid-auto-rows:188px; gap:8px; counter-reset:g; }}
+.gallery-grid > * {{ height:100%; position:relative; counter-increment:g; border-radius:3px; overflow:hidden; }}
+.gallery-grid > *::after {{ content:counter(g,decimal-leading-zero); position:absolute; top:.5rem; right:.55rem; z-index:3;
+  font-family:var(--body); font-size:.6rem; font-weight:700; letter-spacing:.12em; color:#fff;
+  background:rgba(7,23,53,.6); padding:.18rem .42rem; border-radius:2px; }}
+.gallery-grid .photo-slot {{ height:100%; border-radius:0; }}
+.gallery-grid .media, .gallery-grid .media img {{ height:100%; border-radius:0; }}
+.gallery-grid .media img {{ transition:transform .5s ease; }}
+.gallery-grid .media:hover img {{ transform:scale(1.05); }}
 .gallery-grid > *:nth-child(1) {{ grid-row:span 2; }}
 .gallery-grid > *:nth-child(4) {{ grid-row:span 2; }}
 .gallery-grid > *:nth-child(5) {{ grid-column:span 2; }}
-.photo-slot {{ position:relative; aspect-ratio:4/3; border-radius:12px; overflow:hidden;
+.photo-slot {{ position:relative; aspect-ratio:4/3; border-radius:6px; overflow:hidden;
   background:repeating-linear-gradient(45deg,#e9edf5 0 14px,#f3f6fb 14px 28px); border:1px solid #dbe1ec;
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.3rem; text-align:center; padding:1rem; }}
 .photo-slot .tag {{ position:absolute; top:.6rem; left:.6rem; background:var(--navy); color:#fff; font-family:var(--body);
@@ -759,7 +751,7 @@ section {{ padding:5rem 0; }}
 
 /* logo slot */
 .logo-slot {{ position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
-  border:2px dashed rgba(201,166,74,.7); border-radius:12px; background:rgba(255,255,255,.04); color:var(--gold);
+  border:2px dashed rgba(201,166,74,.7); border-radius:6px; background:rgba(255,255,255,.04); color:var(--gold);
   min-height:150px; padding:1.5rem 1rem; font-family:var(--body); font-weight:700; gap:.3rem; }}
 .logo-slot .tag {{ position:absolute; top:.6rem; left:.6rem; background:var(--gold); color:var(--navy-deep); font-size:.6rem;
   letter-spacing:.12em; text-transform:uppercase; padding:.25rem .55rem; border-radius:4px; }}
@@ -770,14 +762,21 @@ section {{ padding:5rem 0; }}
   color:#5a4304; border-radius:10px; padding:.85rem 1.1rem; font-family:var(--body); font-size:.9rem; margin:1.2rem 0; }}
 .dev-note strong {{ color:var(--red); }}
 
-/* banner */
-.cta-band {{ position:relative; overflow:hidden; }}
-.banner {{ position:relative; background:linear-gradient(135deg,#0e2b58 0%,var(--navy-deep) 100%); color:#fff; border:1px solid var(--line);
-  border-radius:18px; padding:3rem 2.5rem; text-align:center; }}
-.banner::before {{ content:""; position:absolute; inset:0; background-image:var(--grain); opacity:.06; pointer-events:none; }}
-.banner .kicker {{ display:block; margin-bottom:.6rem; }}
-.banner h2 {{ color:#fff; margin:0 0 .6rem; font-size:clamp(1.6rem,3.4vw,2.4rem); text-transform:{h_transform}; }}
-.banner p {{ color:var(--muted); max-width:520px; margin:0 auto 1.5rem; font-family:var(--body); }}
+/* closer (end-of-page CTA, flat + left-aligned) */
+.closer {{ padding:0; }}
+.closer-in {{ display:flex; align-items:center; justify-content:space-between; gap:2rem 3rem; flex-wrap:wrap; }}
+.closer-copy {{ max-width:42ch; }}
+.closer-dark {{ position:relative; overflow:hidden; background:var(--navy-deep); color:#fff; }}
+.closer-dark::before {{ content:""; position:absolute; top:0; left:0; right:0; height:3px; background:var(--red); }}
+.closer-dark::after {{ content:""; position:absolute; inset:0; background-image:var(--grain); opacity:.05; pointer-events:none; }}
+.closer-dark .closer-in {{ padding:4.5rem 0; position:relative; z-index:1; }}
+.closer-dark .kicker {{ display:block; margin-bottom:.7rem; }}
+.closer-dark h2 {{ color:#fff; margin:0 0 .6rem; font-size:clamp(1.9rem,4vw,3rem); text-transform:{h_transform}; }}
+.closer-dark p {{ color:var(--muted); margin:0; font-family:var(--body); }}
+.closer-light {{ background:#fff; border-top:1px solid var(--hair); }}
+.closer-light .closer-in {{ padding:3rem 0; }}
+.closer-light .kicker {{ display:block; margin-bottom:.5rem; }}
+.closer-light h2 {{ color:var(--navy); margin:.2rem 0 0; font-size:clamp(1.5rem,3vw,2.1rem); text-transform:{h_transform}; }}
 
 /* split / prose */
 .split {{ display:grid; grid-template-columns:1.05fr .95fr; gap:3rem; align-items:center; }}
