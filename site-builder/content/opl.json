@@ -2,7 +2,7 @@
   "key": "opl",
   "site_name": "Overseas Premier League",
   "short_name": "OPL",
-  "tagline": "Your path to professional basketball overseas.",
+  "tagline": "Overseas player placement for North American basketball.",
   "domain_placeholder": "opl-domain-pending.com",
   "contact_email": "",
   "opl_site_url": "https://opl-domain-pending.com",
@@ -23,7 +23,7 @@
   "events": [
     {
       "name": "OPL Overseas Training Camp",
-      "date_display": "September 21 – 28, 2026",
+      "date_display": "September 21 to 28, 2026",
       "date_iso": "2026-09-21",
       "location": "Malta",
       "description": "Professional men's training camp. Compete in front of team owners and executives. Opportunities to sign with 1st or 2nd Division."

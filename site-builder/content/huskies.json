@@ -2,7 +2,7 @@
   "key": "huskies",
   "site_name": "Vancouver Huskies",
   "short_name": "Huskies",
-  "tagline": "Vancouver Huskies Basketball.",
+  "tagline": "Vancouver's basketball development program.",
   "domain_placeholder": "huskies-domain-pending.com",
   "contact_email": "vancouverhuskiesbasketball@gmail.com",
   "square_link": "#",
@@ -20,7 +20,7 @@
     {"label": "Sign Up & Pay", "href": "signup.html"}
   ],
   "gallery": [
-    {"file": "IMG_2080.png", "caption": "Action — driving dunk"},
+    {"file": "IMG_2080.png", "caption": "Driving dunk"},
     {"file": "IMG_2092.png", "caption": "Players on court"},
     {"file": "IMG_2081.png", "caption": "Player #11"},
     {"file": "IMG_2091.png", "caption": "Player #2 portrait"},
@@ -32,7 +32,7 @@
   "events": [
     {
       "name": "OPL Overseas Training Camp",
-      "date_display": "September 21 – 28, 2026",
+      "date_display": "September 21 to 28, 2026",
       "date_iso": "2026-09-21",
       "location": "Malta",
       "description": "Professional men's training camp through the Overseas Premier League. Compete in front of team owners and executives."
