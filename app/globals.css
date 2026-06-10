@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #0f0f0f;
+  color: #f0ede8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Keep tap targets comfortable on mobile */
+button,
+input {
+  font-family: inherit;
+}
