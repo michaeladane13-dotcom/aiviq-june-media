@@ -1,0 +1,100 @@
+========================================================================
+  NATAL CHART  —  Swiss Ephemeris 2.10 (Moshier+SwissEph)
+========================================================================
+  Birth (local) : 1987-04-01 01:53  BST  (UTC+1)
+  Birth (UT)    : 1987-04-01 00:53 UTC
+  Place         : Ashton-under-Lyne, UK   53.4894N  2.0974W
+  Julian Day UT : 2446886.536806
+  Day/Night     : NIGHT chart (Sun below horizon)
+
+  ANGLES
+    Ascendant        16°37'11" Sagittarius ♐
+    Midheaven (MC)   21°39'00" Libra ♎
+    Descendant       16°37'11" Gemini ♊
+    Imum Coeli (IC)  21°39'00" Aries ♈
+    Vertex            2°55'28" Leo ♌
+
+  PLANETS & POINTS                      house   motion      decl
+    Sun            10°46'24" Aries ♈   H3        +0.988/d   +4.26°
+    Moon           11°24'22" Taurus ♉   H4       +12.827/d  +17.76°
+    Mercury        13°35'38" Pisces ♓   H2        +1.204/d   -8.28°
+    Venus           4°00'44" Pisces ♓   H2        +1.196/d  -10.75°
+    Mars           26°52'22" Taurus ♉   H5        +0.673/d  +20.24°
+    Jupiter         7°02'22" Aries ♈   H3        +0.242/d   +1.80°
+    Saturn         21°09'45" Sagittarius ♐   H1    Rx  -0.001/d  -21.57°
+    Uranus         26°43'41" Sagittarius ♐   H1        +0.000/d  -23.54°
+    Neptune         7°58'49" Capricorn ♑   H1        +0.005/d  -22.17°
+    Pluto           9°20'39" Scorpio ♏   H10   Rx  -0.024/d   +1.38°
+    Chiron         16°44'39" Gemini ♊   H7        +0.047/d  +17.52°
+    Ceres           3°09'11" Capricorn ♑   H1        +0.165/d  -21.68°
+    Pallas          0°58'09" Sagittarius ♐   H11   Rx  -0.071/d  +16.38°
+    Juno           15°25'45" Aquarius ♒   H2        +0.347/d   -7.67°
+    Vesta          11°37'38" Taurus ♉   H4        +0.424/d  +11.32°
+    True Node      11°29'57" Aries ♈   H3        +0.002/d   +4.55°
+    Mean Node      11°43'36" Aries ♈   H3    Rx  -0.053/d   +4.64°
+    Lilith (mean)  14°23'37" Cancer ♋   H7        +0.112/d  +27.77°
+    Lilith (true)  26°57'45" Cancer ♋   H7    Rx  -3.166/d  +25.76°
+
+  HOUSE CUSPS                Placidus            Whole Sign
+    House 1   16°37'11" Sagittarius ♐   0°00'00" Sagittarius ♐
+    House 2   27°31'24" Capricorn ♑    0°00'00" Capricorn ♑
+    House 3   16°31'31" Pisces ♓       0°00'00" Aquarius ♒
+    House 4   21°39'00" Aries ♈        0°00'00" Pisces ♓
+    House 5   14°44'18" Taurus ♉       0°00'00" Aries ♈
+    House 6    1°50'46" Gemini ♊       0°00'00" Taurus ♉
+    House 7   16°37'11" Gemini ♊       0°00'00" Gemini ♊
+    House 8   27°31'24" Cancer ♋       0°00'00" Cancer ♋
+    House 9   16°31'31" Virgo ♍        0°00'00" Leo ♌
+    House 10  21°39'00" Libra ♎        0°00'00" Virgo ♍
+    House 11  14°44'18" Scorpio ♏      0°00'00" Libra ♎
+    House 12   1°50'46" Sagittarius ♐   0°00'00" Scorpio ♏
+
+  Part of Fortune : 15°59'13" Scorpio ♏   H11  (night formula)
+
+  ELEMENT / MODALITY BALANCE (10 planets)
+    Fire 4   Earth 3   Air 0   Water 3
+    Cardinal 3   Fixed 3   Mutable 4
+
+  ASPECTS (major + minor, with orb)
+    Moon        ⚺ Semisextile    True Node    orb 0.09°
+    Chiron      ☍ Opposition     ASC          orb 0.12°
+    Mars        ⚻ Quincunx       Uranus       orb 0.14°
+    Moon        ⚼ Sesquiquadrate Uranus       orb 0.32°
+    Mars        ∠ Semisquare     True Node    orb 0.37°
+    Saturn      ✶ Sextile        MC           orb 0.49°
+    Sun         ⚺ Semisextile    Moon         orb 0.63°
+    Sun         ☌ Conjunction    True Node    orb 0.73°
+    Venus       Q Quintile       Saturn       orb 0.85°
+    Jupiter     □ Square         Neptune      orb 0.94°
+    Sun         ∠ Semisquare     Mars         orb 1.10°
+    Mercury     Q Quintile       Mars         orb 1.28°
+    Neptune     ✶ Sextile        Pluto        orb 1.36°
+    Sun         ⚻ Quincunx       Pluto        orb 1.43°
+    Moon        ☍ Opposition     Pluto        orb 2.06°
+    Moon        ✶ Sextile        Mercury      orb 2.19°
+    Sun         □ Square         Neptune      orb 2.79°
+    Mercury     □ Square         ASC          orb 3.03°
+    Mercury     □ Square         Chiron       orb 3.15°
+    Moon        △ Trine          Neptune      orb 3.43°
+    Neptune     □ Square         True Node    orb 3.52°
+    Sun         ☌ Conjunction    Jupiter      orb 3.73°
+    Venus       ✶ Sextile        Neptune      orb 3.97°
+    Mercury     △ Trine          Pluto        orb 4.25°
+    Saturn      ☍ Opposition     Chiron       orb 4.42°
+    Jupiter     ☌ Conjunction    True Node    orb 4.46°
+    Saturn      ☌ Conjunction    ASC          orb 4.54°
+    Chiron      △ Trine          MC           orb 4.91°
+    True Node   △ Trine          ASC          orb 5.12°
+    Venus       △ Trine          Pluto        orb 5.33°
+    Saturn      ☌ Conjunction    Uranus       orb 5.57°
+    Sun         △ Trine          ASC          orb 5.85°
+
+  ESSENTIAL DIGNITIES (traditional)
+    Sun       in Aries       Exaltation
+    Moon      in Taurus      Exaltation
+    Mercury   in Pisces      Detriment  Fall
+    Venus     in Pisces      Exaltation
+    Mars      in Taurus      Detriment
+    Jupiter   in Aries       peregrine
+    Saturn    in Sagittarius peregrine
+========================================================================
