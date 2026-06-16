@@ -19,22 +19,23 @@ Use the **Superhuman** connector.
 Present each flagged item as a short numbered line, then ask a direct question and
 WAIT for the answer before acting. Don't batch-apply without confirmation.
 
-**Appointments → "Want an iPhone reminder for this?"**
-On yes, create a REAL Apple Reminder (syncs to the iPhone via iCloud) using the
-local helper. Do NOT create a calendar event — the user wants Reminders.
-- Run the compiled helper:
-  `~/projects/aiviq-june-media/bin/add_reminder add "<title>" "YYYY-MM-DD HH:MM" "<notes>"`
-  e.g. `bin/add_reminder add "Physio appointment" "2026-06-17 14:00" "Jane App booking"`.
-  It sets the due date AND an alarm at that time, so the iPhone fires a Reminders
-  notification then. Offer a day-before nudge too (a second reminder dated the day before).
-- Confirm the exact date/time back to the user before creating. If the time is
-  unclear, ask rather than guess.
-- The helper uses EventKit (the Reminders AppleScript bridge hangs on macOS 26, so
-  we use this signed CLI instead). If it prints `DENIED: no Reminders access`,
-  grant it once: run `~/projects/aiviq-june-media/bin/add_reminder add "test"`
-  from the macOS **Terminal app** and click Allow (the grant sticks to the signed
-  helper, so /triage works afterward). If the binary is missing, rebuild with
-  `bash bin/build.sh` (compiles AND re-signs with the stable identity).
+**Appointments → "Want a phone reminder for this?"**
+On yes, create the reminder as a ONE-TIME Claude routine that fires a phone
+notification at the chosen time. This is how we do iPhone reminders — no Calendar,
+no Reminders-app, no permissions. Use the `create_scheduled_task` tool:
+- Confirm the date/time with the user first. Ask when they want the nudge — default
+  to 1 hour before the appointment; also offer the day before.
+- Call `create_scheduled_task` with:
+  - `taskId`: `remind-<short-slug>-<yyyymmddhhmm>` (e.g. `remind-physio-202606171300`)
+  - `fireAt`: ISO 8601 of the reminder moment in the user's timezone
+    (America/Vancouver = `-07:00` in summer), e.g. `2026-06-17T13:00:00-07:00`
+  - `description`: `Appointment reminder: <title>`
+  - `prompt`: `Output exactly this one line as your final message (it becomes the
+    phone notification): "Reminder: <title> at <appt time> on <date>."` Do nothing
+    else.
+- A one-time task auto-disables after it fires. For a day-before nudge, create a
+  second task at that earlier moment.
+- The notification reaches the iPhone via the Claude app when the task fires.
 
 **Issues (Stripe/PayPal/Manus problems) → offer the options.**
 For each, offer: *Open it (give the link/summary) / Draft a reply / Mark done /
@@ -53,6 +54,7 @@ to send it.
 ## Guardrails
 - Never send mail or delete/trash a thread without an explicit yes.
 - Confirm dates/times before creating any reminder.
-- Reminders are real Apple Reminders via `bin/add_reminder` (never calendar events).
+- Reminders are one-time Claude routines (`create_scheduled_task` with `fireAt`)
+  that notify the phone — never calendar events, never the Reminders app.
 - If the user says "do them all," still echo the list of actions you're about to
   take and get one confirmation before applying.

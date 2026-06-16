@@ -43,31 +43,16 @@ You get push notifications on your phone from this in two ways:
    completion notification to your phone (same as your other routines). The routine
    ends with a one-line summary (e.g. *"Triage: 3 need you (2 issues, 1 appt)"*) so
    the notification is actually useful at a glance. Tap it to open the digest.
-2. **At appointment time** — each reminder you approve in `/triage` is a real
-   **Apple Reminder** with an alarm, which fires a Reminders notification on your
-   iPhone at the time you set (it syncs from this Mac via iCloud).
+2. **At appointment time** — each reminder you approve in `/triage` becomes a
+   one-time Claude routine that fires a notification to your phone at the time you
+   set. No setup, no permissions.
 
-## iPhone reminders — how it works
-"iPhone reminder" = a genuine entry in the Apple **Reminders** app (not a calendar
-event). `/triage` creates it with the local helper `bin/add_reminder` (a small
-EventKit CLI in this repo), because the Reminders AppleScript bridge hangs on
-macOS 26. The reminder lands in your default Reminders list with an alarm at the
-appointment time and syncs to your iPhone through iCloud.
-
-**One-time setup (grant Reminders access):** macOS won't show the permission
-prompt for a helper launched in the background, so grant it once from the Terminal
-app, which can show the dialog:
-
-1. Open **Terminal** (Spotlight → "Terminal").
-2. Paste and run: `~/projects/aiviq-june-media/bin/add_reminder add "setup test" "$(date +%Y-%m-%d) 23:59"`
-3. Click **Allow** (or **OK**) on the "wants to access your Reminders" dialog.
-4. You'll see `OK: created reminder ...` and a "setup test" reminder appears — swipe
-   it away. Done: the grant is keyed to the signed helper, so `/triage` can create
-   reminders from now on.
-
-If `bin/add_reminder` ever prints `DENIED`, redo those steps. Rebuild the helper
-after edits with `bash bin/build.sh` (compiles AND re-signs with the stable
-identity so the grant survives).
+## Reminders — how it works
+"iPhone reminder" here = a **one-time Claude routine** (a scheduled task with a
+`fireAt` time). When you approve an appointment in `/triage`, it creates that task;
+when the time arrives, the Claude app pushes the reminder notification to your
+phone, then the task auto-disables. No Calendar event, no Reminders-app, no macOS
+permission dialogs — it uses the same routine mechanism as this triage task itself.
 
 ## Tuning
 Edit `routines/inbox-triage.md` to change which senders auto-file, add more
