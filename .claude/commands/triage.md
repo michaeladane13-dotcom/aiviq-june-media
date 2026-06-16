@@ -20,14 +20,20 @@ Present each flagged item as a short numbered line, then ask a direct question a
 WAIT for the answer before acting. Don't batch-apply without confirmation.
 
 **Appointments → "Want an iPhone reminder for this?"**
-On yes, create the reminder as a calendar event with a popup alert:
-- `create_or_update_event` with the extracted title, `start`/`end`, the user's
-  timezone, and `reminders: [{ method: "popup", minutes: 60 }]` (offer to add a
-  day-before popup too: `{ method: "popup", minutes: 1440 }`).
+On yes, create a REAL Apple Reminder (syncs to the iPhone via iCloud) using the
+local helper. Do NOT create a calendar event — the user wants Reminders.
+- Run the compiled helper:
+  `~/projects/aiviq-june-media/bin/add_reminder add "<title>" "YYYY-MM-DD HH:MM" "<notes>"`
+  e.g. `bin/add_reminder add "Physio appointment" "2026-06-17 14:00" "Jane App booking"`.
+  It sets the due date AND an alarm at that time, so the iPhone fires a Reminders
+  notification then. Offer a day-before nudge too (a second reminder dated the day before).
 - Confirm the exact date/time back to the user before creating. If the time is
   unclear, ask rather than guess.
-- Note: this fires a notification on the iPhone via the Calendar app. (We can't
-  write to the Apple Reminders app — no connector for it.)
+- The helper uses EventKit (the Reminders AppleScript bridge hangs on macOS 26, so
+  we use this signed CLI instead). If it prints `DENIED: no Reminders access`,
+  enable Reminders for Claude once in System Settings > Privacy & Security >
+  Reminders, then re-run. If the binary is missing, rebuild it:
+  `swiftc -O bin/add_reminder.swift -o bin/add_reminder`.
 
 **Issues (Stripe/PayPal/Manus problems) → offer the options.**
 For each, offer: *Open it (give the link/summary) / Draft a reply / Mark done /
@@ -45,6 +51,7 @@ to send it.
 
 ## Guardrails
 - Never send mail or delete/trash a thread without an explicit yes.
-- Confirm dates/times before creating any calendar event.
+- Confirm dates/times before creating any reminder.
+- Reminders are real Apple Reminders via `bin/add_reminder` (never calendar events).
 - If the user says "do them all," still echo the list of actions you're about to
   take and get one confirmation before applying.

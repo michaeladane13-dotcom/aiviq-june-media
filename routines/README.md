@@ -43,15 +43,21 @@ You get push notifications on your phone from this in two ways:
    completion notification to your phone (same as your other routines). The routine
    ends with a one-line summary (e.g. *"Triage: 3 need you (2 issues, 1 appt)"*) so
    the notification is actually useful at a glance. Tap it to open the digest.
-2. **At appointment time** — each reminder you approve in `/triage` is a calendar
-   event with a popup alert, which is a separate notification that fires on your
-   phone at the time you set.
+2. **At appointment time** — each reminder you approve in `/triage` is a real
+   **Apple Reminder** with an alarm, which fires a Reminders notification on your
+   iPhone at the time you set (it syncs from this Mac via iCloud).
 
-## Known limitation
-"iPhone reminder" = a **calendar event with a popup alert** (fires a notification on
-your phone via the Calendar app). Writing to the Apple **Reminders** app isn't
-possible — there's no connector for it. If you need true Reminders-app entries,
-that's a future add once such a tool exists.
+## iPhone reminders — how it works
+"iPhone reminder" = a genuine entry in the Apple **Reminders** app (not a calendar
+event). `/triage` creates it with the local helper `bin/add_reminder` (a small
+EventKit CLI in this repo), because the Reminders AppleScript bridge hangs on
+macOS 26. The reminder lands in your default Reminders list with an alarm at the
+appointment time and syncs to your iPhone through iCloud.
+
+**One-time setup:** the first time, macOS needs Reminders access granted to Claude
+— System Settings > Privacy & Security > Reminders > enable **Claude**. If
+`bin/add_reminder` ever prints `DENIED`, that toggle is why. Rebuild the helper
+after edits with `swiftc -O bin/add_reminder.swift -o bin/add_reminder`.
 
 ## Tuning
 Edit `routines/inbox-triage.md` to change which senders auto-file, add more
