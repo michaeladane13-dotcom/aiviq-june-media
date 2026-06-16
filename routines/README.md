@@ -54,10 +54,20 @@ EventKit CLI in this repo), because the Reminders AppleScript bridge hangs on
 macOS 26. The reminder lands in your default Reminders list with an alarm at the
 appointment time and syncs to your iPhone through iCloud.
 
-**One-time setup:** the first time, macOS needs Reminders access granted to Claude
-— System Settings > Privacy & Security > Reminders > enable **Claude**. If
-`bin/add_reminder` ever prints `DENIED`, that toggle is why. Rebuild the helper
-after edits with `swiftc -O bin/add_reminder.swift -o bin/add_reminder`.
+**One-time setup (grant Reminders access):** macOS won't show the permission
+prompt for a helper launched in the background, so grant it once from the Terminal
+app, which can show the dialog:
+
+1. Open **Terminal** (Spotlight → "Terminal").
+2. Paste and run: `~/projects/aiviq-june-media/bin/add_reminder add "setup test" "$(date +%Y-%m-%d) 23:59"`
+3. Click **Allow** (or **OK**) on the "wants to access your Reminders" dialog.
+4. You'll see `OK: created reminder ...` and a "setup test" reminder appears — swipe
+   it away. Done: the grant is keyed to the signed helper, so `/triage` can create
+   reminders from now on.
+
+If `bin/add_reminder` ever prints `DENIED`, redo those steps. Rebuild the helper
+after edits with `bash bin/build.sh` (compiles AND re-signs with the stable
+identity so the grant survives).
 
 ## Tuning
 Edit `routines/inbox-triage.md` to change which senders auto-file, add more

@@ -31,9 +31,10 @@ local helper. Do NOT create a calendar event — the user wants Reminders.
   unclear, ask rather than guess.
 - The helper uses EventKit (the Reminders AppleScript bridge hangs on macOS 26, so
   we use this signed CLI instead). If it prints `DENIED: no Reminders access`,
-  enable Reminders for Claude once in System Settings > Privacy & Security >
-  Reminders, then re-run. If the binary is missing, rebuild it:
-  `swiftc -O bin/add_reminder.swift -o bin/add_reminder`.
+  grant it once: run `~/projects/aiviq-june-media/bin/add_reminder add "test"`
+  from the macOS **Terminal app** and click Allow (the grant sticks to the signed
+  helper, so /triage works afterward). If the binary is missing, rebuild with
+  `bash bin/build.sh` (compiles AND re-signs with the stable identity).
 
 **Issues (Stripe/PayPal/Manus problems) → offer the options.**
 For each, offer: *Open it (give the link/summary) / Draft a reply / Mark done /
