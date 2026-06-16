@@ -84,6 +84,15 @@ Triage @ {time} — {N} new, {auto} auto-filed, {flagged} need you
 To act on the numbered items, open Claude and run /triage.
 ```
 
+## Step 4 — End with a push-friendly summary
+Finish every run by printing ONE short line as your final output — this is what
+lands in the phone notification when the routine completes. Make it scannable:
+
+`Triage: {flagged} need you ({issues} issues, {appts} appts) · {auto} auto-filed`
+
+e.g. `Triage: 3 need you (2 issues, 1 appt) · 4 auto-filed`. If nothing needs the
+user, say `Triage: all clear · {auto} auto-filed`. Keep it under ~12 words.
+
 ## Rules of thumb
 - When a Stripe/PayPal/Manus email could be read as either a receipt OR an issue,
   treat it as an **issue** (bucket B) — safer to flag than to silently hide.

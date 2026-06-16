@@ -37,6 +37,16 @@ where reminders and replies actually happen.
   a proposed **iPhone reminder** (created on your yes during `/triage`).
 - **Anything else important** → flagged under "Needs you."
 
+## Phone notifications
+You get push notifications on your phone from this in two ways:
+1. **Each routine run** — when the Routine finishes, the Claude app sends its usual
+   completion notification to your phone (same as your other routines). The routine
+   ends with a one-line summary (e.g. *"Triage: 3 need you (2 issues, 1 appt)"*) so
+   the notification is actually useful at a glance. Tap it to open the digest.
+2. **At appointment time** — each reminder you approve in `/triage` is a calendar
+   event with a popup alert, which is a separate notification that fires on your
+   phone at the time you set.
+
 ## Known limitation
 "iPhone reminder" = a **calendar event with a popup alert** (fires a notification on
 your phone via the Calendar app). Writing to the Apple **Reminders** app isn't
