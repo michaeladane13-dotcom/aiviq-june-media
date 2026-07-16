@@ -9,6 +9,7 @@
 <meta property="og:description" content="Starseed DNA activation MP3s delivered instantly, and personal psychic readings sent by email. Rated 4.9 stars, 295 reviews, 706+ sales.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://danielpsychicartist.space/">
+<meta property="og:image" content="https://danielpsychicartist.space/img/daniel.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%8C%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -118,14 +119,11 @@
 
   .about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:52px;align-items:center}
   @media(max-width:760px){.about-grid{grid-template-columns:1fr}}
-  .orb{aspect-ratio:1;border-radius:50%;max-width:340px;margin:0 auto;width:100%;
-    background:radial-gradient(circle at 35% 30%, rgba(230,193,128,.5), transparent 45%),
-               radial-gradient(circle at 65% 70%, rgba(157,123,255,.55), transparent 50%),
-               radial-gradient(circle at 50% 50%, #1c1c46, #0e0e28 70%);
-    border:1px solid var(--line);box-shadow:0 0 80px rgba(157,123,255,.3);
-    display:flex;align-items:center;justify-content:center;animation:pulse 6s ease-in-out infinite}
+  .portrait{max-width:360px;margin:0 auto;width:100%;border-radius:var(--radius);
+    border:1px solid var(--line);display:block;
+    box-shadow:0 0 60px rgba(157,123,255,.3), 0 0 120px rgba(230,193,128,.15);
+    animation:pulse 6s ease-in-out infinite}
   @keyframes pulse{0%,100%{box-shadow:0 0 60px rgba(157,123,255,.25)}50%{box-shadow:0 0 110px rgba(230,193,128,.35)}}
-  .orb svg{width:44%}
   .about-copy p{color:var(--muted);margin-bottom:16px}
   .about-copy strong{color:var(--ink);font-weight:400}
 
@@ -214,13 +212,7 @@
 
 <section id="about">
   <div class="wrap about-grid">
-    <div class="orb" aria-hidden="true">
-      <svg viewBox="0 0 100 100" fill="none" stroke="#f0d9a0" stroke-width="1.5">
-        <circle cx="50" cy="50" r="40" opacity=".5"/>
-        <path d="M50 14 L58 40 L84 42 L63 58 L70 84 L50 69 L30 84 L37 58 L16 42 L42 40 Z" opacity=".9"/>
-        <circle cx="50" cy="50" r="4" fill="#e6c180" stroke="none"/>
-      </svg>
-    </div>
+    <img class="portrait" src="img/daniel.jpg" alt="Daniel, psychic artist" width="900" height="1352" loading="lazy">
     <div class="about-copy">
       <p class="eyebrow">About Daniel</p>
       <h2 style="font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:20px">Channeled frequencies for your awakening</h2>
