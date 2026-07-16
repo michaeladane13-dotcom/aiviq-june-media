@@ -185,8 +185,8 @@
     </h1>
     <p>I'm Daniel, a psychic artist. My shop is dedicated to tools that empower you to explore the depths of your psychic and creative abilities. Activation MP3s download instantly, and every psychic reading is prepared personally and sent to your email.</p>
     <div class="cta-row">
-      <a class="btn btn-glow" href="#shop">Shop Activations</a>
-      <a class="btn btn-ghost" href="https://www.etsy.com/shop/DanielPsychicArtist" target="_blank" rel="noopener">Visit Etsy Shop</a>
+      <a class="btn btn-glow" href="#join">Join The List</a>
+      <a class="btn btn-ghost" href="#shop">Shop Activations</a>
     </div>
     <div class="trustbar">
       <span class="trust"><b>★ 4.9</b> · 295 reviews</span>
@@ -277,14 +277,24 @@
 <section id="join">
   <div class="wrap">
     <div class="signup">
-      <p class="eyebrow">Stay Connected</p>
-      <h2>Get new activations first</h2>
-      <p>Join the list for new releases, free frequencies, and shop updates.</p>
-      <!-- Wire this form to MailerLite / your email tool: replace the action URL -->
-      <form action="#" method="post" onsubmit="alert('Email signup is not connected yet.');return false;">
+      <p class="eyebrow">Free Activation</p>
+      <h2>Get a free starseed activation MP3</h2>
+      <p>Join Daniel's list and receive a channeled activation frequency free, plus new releases and shop updates.</p>
+      <!-- The form posts to the lead endpoint (see lead-endpoint/worker.js in the
+           repo), which stores the email in Daniel's Resend audience and redirects
+           to /thanks.html where the Meta Pixel Lead event fires. Paste the deployed
+           worker URL into FORM_ACTION below. Until then, a friendly not-ready note. -->
+      <form id="lead-form" method="post">
         <input type="email" name="email" placeholder="Your email address" required>
         <button class="btn btn-glow" type="submit">Join</button>
       </form>
+      <script>
+        var FORM_ACTION = "";  /* deployed lead endpoint URL goes here */
+        document.getElementById("lead-form").addEventListener("submit", function(e){
+          if (!FORM_ACTION) { e.preventDefault(); alert("Email signup opens soon."); return; }
+          this.action = FORM_ACTION;
+        });
+      </script>
     </div>
   </div>
 </section>
